@@ -61,7 +61,11 @@ class WebViewFragment : Fragment() {
     }
 
     private fun refresh() {
-        wvContent.loadData(mData, "text/html", null)
+        if (mData.startsWith("https://")) {
+            wvContent.loadUrl(mData)
+        } else {
+            wvContent.loadData(mData, "text/html", null)
+        }
     }
 
 }

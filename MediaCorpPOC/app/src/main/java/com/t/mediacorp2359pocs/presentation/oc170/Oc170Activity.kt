@@ -29,9 +29,10 @@ class Oc170Activity : AppCompatActivity() {
 
         private const val JSON_API_PARAGRAPH_DEFAULT = """<iframe src="https://infographics.channelnewsasia.com/covid-19/map.html" height="200" width="300" title="Iframe Example"></iframe>"""
 
-        private const val SAMPLE_REST_EXPORT_VIEWS = """<iframe src="https://infographics.channelnewsasia.com/covid-19/map.html" height="200" width="300" title="Iframe Example"></iframe>"""
+        private const val SAMPLE_REST_EXPORT_VIEWS_1 = """https://infographics.channelnewsasia.com/covid-19/map.html"""
+        private const val SAMPLE_REST_EXPORT_VIEWS_2 = """<iframe src="https://infographics.channelnewsasia.com/covid-19/map.html" height="200" width="300" title="Iframe Example"></iframe>"""
 
-        val IFRAMES = listOf(BAD_SAMPLE_IFRAME_1, BAD_SAMPLE_IFRAM_2, JSON_API_PARAGRAPH_DEFAULT, SAMPLE_REST_EXPORT_VIEWS)
+        val IFRAMES = listOf(BAD_SAMPLE_IFRAME_1, BAD_SAMPLE_IFRAM_2, JSON_API_PARAGRAPH_DEFAULT, SAMPLE_REST_EXPORT_VIEWS_1, SAMPLE_REST_EXPORT_VIEWS_2)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
