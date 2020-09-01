@@ -61,6 +61,7 @@ class Oc171Activity : AppCompatActivity() {
                     "\nReceive at:   $recvTime" +
                     "\nResponseTime: $diff" +
                     "\nContent Length: $contentLength" +
+                    "\n" +
                     "\nContent: $content"
                 tvContent.text = message
                 pbLoading.isGone = true
