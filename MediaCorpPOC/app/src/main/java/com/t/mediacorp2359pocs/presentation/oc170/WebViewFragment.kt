@@ -52,12 +52,9 @@ class WebViewFragment : Fragment() {
                     val isLoading = newProgress != 0 && newProgress != 100
                     pbLoading.progress = newProgress
                     pbLoading.isVisible = isLoading
-                    swipeRefreshLayout.isRefreshing = isLoading
                 }
             }
         }
-
-        swipeRefreshLayout.setOnRefreshListener { refresh() }
     }
 
     private fun refresh() {
