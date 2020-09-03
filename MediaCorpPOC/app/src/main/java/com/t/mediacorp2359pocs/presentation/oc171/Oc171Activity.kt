@@ -9,6 +9,8 @@ import androidx.core.view.isVisible
 import com.t.mediacorp2359pocs.R
 import com.t.mediacorp2359pocs.utils.toast
 import kotlinx.android.synthetic.main.activity_oc171.*
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,7 +22,13 @@ class Oc171Activity : AppCompatActivity() {
         fun getLaunchIntent(context: Context): Intent {
             return Intent(context, Oc171Activity::class.java)
         }
+
+        const val TYPE_JSON = 1
+        const val TYPE_REST = 2
+        const val TYPE_PROTO = 3
     }
+
+    private var mContentSize = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,19 +39,21 @@ class Oc171Activity : AppCompatActivity() {
 
     private fun setUpViews() {
         btnJson.setOnClickListener {
-            loadJson(isJsonApi = true)
+            loadJson(type = TYPE_JSON)
         }
 
         btnRest.setOnClickListener {
-            loadJson(isJsonApi = false)
+            loadJson(type = TYPE_REST)
         }
 
-        btnProto.setOnClickListener { toast("Not Available") }
+        btnProto.setOnClickListener {
+            loadJson(type = TYPE_PROTO)
+        }
     }
 
-    private fun loadJson(isJsonApi: Boolean) {
+    private fun loadJson(type: Int) {
 
-        val endPoint = """https://s3.amazonaws.com/"""
+        val endPoint = "https://www.channelnewsasia.com/"
         val retrofit = retrofit2.Retrofit.Builder()
             .baseUrl(endPoint)
             .build()
@@ -55,7 +65,8 @@ class Oc171Activity : AppCompatActivity() {
                 val recvTime = response.raw().receivedResponseAtMillis()
                 val diff = recvTime - sentTime
                 val content = response.body()?.string()
-                val contentLength = response.body()?.contentLength()
+                val contentLength = content?.toByteArray()?.size
+
                 val message =
                       "Sent at:      $sentTime" +
                     "\nReceive at:   $recvTime" +
@@ -75,10 +86,12 @@ class Oc171Activity : AppCompatActivity() {
         }
 
         pbLoading.isVisible = true
-        if (isJsonApi) {
-            jsonService.loadJson().enqueue(callback)
-        } else {
-            jsonService.loadRest().enqueue(callback)
+        when(type) {
+            TYPE_JSON -> jsonService.loadJson().enqueue(callback)
+
+            TYPE_REST -> jsonService.loadRest().enqueue(callback)
+
+            TYPE_PROTO -> jsonService.loadProtobuff().enqueue(callback)
         }
     }
 }
