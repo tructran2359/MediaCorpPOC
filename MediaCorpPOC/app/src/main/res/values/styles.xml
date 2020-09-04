@@ -7,4 +7,35 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="tvLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:background">#5500FF00</item>
+    </style>
+
+    <style name="tvLabel.sub">
+        <item name="android:background">#220000FF</item>
+    </style>
+
+    <style name="tvContent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+    <style name="recyclerView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:nestedScrollingEnabled">false</item>
+    </style>
+
+    <style name="viewHorizontalDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@android:color/darker_gray</item>
+    </style>
+
 </resources>

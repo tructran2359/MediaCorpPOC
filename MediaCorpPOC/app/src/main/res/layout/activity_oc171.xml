@@ -39,7 +39,7 @@
         android:text="PROTOBUFF"
         />
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@+id/btnProto"
@@ -50,13 +50,179 @@
         android:padding="16dp"
         >
 
-        <TextView
-            android:id="@+id/tvContent"
+        <LinearLayout
+            android:id="@+id/llContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:orientation="vertical"
+            >
 
-    </ScrollView>
+            <TextView
+                android:text="ID"
+                style="@style/tvLabel"
+                />
+
+            <TextView
+                android:id="@+id/tvId"
+                tools:text="13073470"
+                style="@style/tvContent"
+                />
+
+            <TextView
+                android:text="Title"
+                style="@style/tvLabel"
+                />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                tools:text="13073470"
+                style="@style/tvContent"
+                />
+
+            <TextView
+                android:text="FeedId"
+                style="@style/tvLabel"
+                />
+
+            <TextView
+                android:id="@+id/tvFeedId"
+                tools:text="13073470"
+                style="@style/tvContent"
+                />
+
+            <TextView
+                android:text="WebUrl"
+                style="@style/tvLabel"
+                />
+
+            <TextView
+                android:id="@+id/tvWebUrl"
+                tools:text="13073470"
+                style="@style/tvContent"
+                />
+
+            <TextView
+                android:text="HeaderImages"
+                style="@style/tvLabel"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHeaderImages"
+                style="@style/recyclerView"
+                />
+
+            <TextView
+                android:text="Created"
+                style="@style/tvLabel"
+                />
+
+            <TextView
+                android:id="@+id/tvCreated"
+                tools:text="13073470"
+                style="@style/tvContent"
+                />
+
+            <TextView
+                android:text="Last Modified"
+                style="@style/tvLabel"
+                />
+
+            <TextView
+                android:id="@+id/tvLastModified"
+                tools:text="13073470"
+                style="@style/tvContent"
+                />
+
+            <TextView
+                android:text="Keywords"
+                style="@style/tvLabel"
+                />
+
+            <TextView
+                android:id="@+id/tvKeywords"
+                tools:text="13073470"
+                style="@style/tvContent"
+                />
+
+            <TextView
+                android:text="Copyright"
+                style="@style/tvLabel"
+                />
+
+            <TextView
+                android:id="@+id/tvCopyright"
+                tools:text="13073470"
+                style="@style/tvContent"
+                />
+
+            <TextView
+                android:text="Article Type"
+                style="@style/tvLabel"
+                />
+
+            <TextView
+                android:id="@+id/tvArticleType"
+                tools:text="13073470"
+                style="@style/tvContent"
+                />
+
+            <TextView
+                android:text="Category Name"
+                style="@style/tvLabel"
+                />
+
+            <TextView
+                android:id="@+id/tvCateName"
+                tools:text="13073470"
+                style="@style/tvContent"
+                />
+
+            <TextView
+                android:text="Doc Type"
+                style="@style/tvLabel"
+                />
+
+            <TextView
+                android:id="@+id/tvDocType"
+                tools:text="13073470"
+                style="@style/tvContent"
+                />
+
+            <TextView
+                android:text="Ads Position"
+                style="@style/tvLabel"
+                />
+
+            <TextView
+                android:id="@+id/tvAdsPos"
+                tools:text="13073470"
+                style="@style/tvContent"
+                />
+
+            <TextView
+                android:text="Cia Keywords"
+                style="@style/tvLabel"
+                />
+
+            <TextView
+                android:id="@+id/tvCiaKeywords"
+                tools:text="13073470"
+                style="@style/tvContent"
+                />
+
+            <TextView
+                android:text="Fragments"
+                style="@style/tvLabel"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFragments"
+                style="@style/recyclerView"
+                />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <ProgressBar
         android:id="@+id/pbLoading"

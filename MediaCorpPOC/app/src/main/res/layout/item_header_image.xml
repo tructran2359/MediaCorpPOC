@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp"
+    tools:ignore="HardcodedText"
+    >
+
+    <TextView
+        android:text="ID"
+        style="@style/tvLabel.sub"
+        />
+
+    <TextView
+        android:id="@+id/tvId"
+        tools:text="13073470"
+        style="@style/tvContent"
+        />
+
+    <TextView
+        android:text="Ratio"
+        style="@style/tvLabel.sub"
+        />
+
+    <TextView
+        android:id="@+id/tvRatio"
+        tools:text="13073470"
+        style="@style/tvContent"
+        />
+
+    <TextView
+        android:text="Caption"
+        style="@style/tvLabel.sub"
+        />
+
+    <TextView
+        android:id="@+id/tvCaption"
+        tools:text="13073470"
+        style="@style/tvContent"
+        />
+
+    <TextView
+        android:text="Cia Keywords"
+        style="@style/tvLabel.sub"
+        />
+
+    <TextView
+        android:id="@+id/tvCiaKeywords"
+        tools:text="13073470"
+        style="@style/tvContent"
+        />
+
+    <View style="@style/viewHorizontalDivider" />
+
+</LinearLayout>
