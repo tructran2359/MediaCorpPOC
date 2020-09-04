@@ -47,7 +47,7 @@ class FragmentVH(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(item: UiFragment) {
         itemView.run {
-            tvContent.text = item.properties.TEXT.asString.toHtmlSpanned()
+            tvContent.text = item.text.toHtmlSpanned()
         }
     }
 }

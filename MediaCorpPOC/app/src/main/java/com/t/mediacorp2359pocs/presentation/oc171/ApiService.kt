@@ -1,5 +1,7 @@
 package com.t.mediacorp2359pocs.presentation.oc171
 
+//import com.proto.model.ArticleOuterClass
+import com.aperto.mediacorp.protobuf.protos.ArticleProto
 import com.t.mediacorp2359pocs.model.json.JsonResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -15,5 +17,5 @@ interface ApiService {
     fun loadRest(@Url url: String = "https://demo3704578.mockable.io/rest"): Call<ResponseBody>
 
     @GET
-    fun loadProtobuff(@Url url: String = "https://www.channelnewsasia.com/blueprint/servlet/protobuf/article/13073470"): Call<ResponseBody>
+    fun loadProtobuff(@Url url: String = "https://www.channelnewsasia.com/blueprint/servlet/protobuf/article/13073470"): Call<ArticleProto.Article>
 }

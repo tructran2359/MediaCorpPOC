@@ -6,6 +6,6 @@ data class Fragment(
     val properties: Properties = Properties()
 ) {
     fun toUiModel(): UiFragment {
-        return UiFragment(properties = properties.toUiModel())
+        return UiFragment(text = properties.TEXT.asString)
     }
 }

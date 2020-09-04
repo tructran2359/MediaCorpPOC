@@ -1,0 +1,90 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "FragmentsProto";
+
+import "types.proto";
+
+// the fragment
+message Fragment {
+
+    // possible fragment types
+    enum Type {
+        // Text fragment with basic set of supported html tags.
+        // see http://confluence.mediacorp.sg/display/CNA2/Natively+Supported+Rich+Text+Elements+by+Android+and+iOS
+        // for supported tags
+        // currently evaluated property: TEXT/Value.as_string
+        ARTICLE_TEXT = 0;
+
+        // currently evaluated property: EXTENDED_TEXT/Value.as_extended_text
+        ARTICLE_EXTENDED_TEXT = 1;
+
+        // list with bullets or numbered
+        // currently evaluated property: LIST/Value.as_list
+        ARTICLE_LIST = 2;
+
+        // citation with an author
+        // currently evaluated property: CITATION/Value.as_citation
+        ARTICLE_CITATION = 3;
+
+        // image
+        // currently evaluated property: IMAGE/Value.as_image
+        ARTICLE_IMAGE = 4;
+
+        // video
+        // currently evaluated property: VIDEO/Value.as_video
+        ARTICLE_VIDEO = 5;
+
+        // html
+        // currently evaluated property: HTML/Value.asString
+        ARTICLE_HTML = 6;
+    }
+
+    // possible key types for fragment properties
+    enum Key {
+        TEXT = 0;
+        EXTENDED_TEXT = 1;
+        LIST = 2;
+        CITATION = 3;
+        IMAGE = 4;
+        VIDEO = 5;
+        HTML = 6;
+    }
+
+    // value of property
+    message Value {
+
+        // string value
+        string as_string = 1;
+
+        // boolean value
+        bool as_boolean = 2;
+
+        // int value
+        int32 as_int = 3;
+
+        // long value
+        int64 as_long = 4;
+
+        // extended text value
+        ExtendedText as_extended_text = 5;
+
+        // list value
+        List as_list = 6;
+
+        // citation value
+        Citation as_citation = 7;
+
+        // image value
+        Image as_image = 8;
+
+        // video value
+        Video as_video = 9;
+    }
+
+    // type of fragment
+    Type type = 1;
+
+    // Key-value map contains sum of values based on their keys
+    // Use string representation of key as enums are not allowed as keys
+    map<string, Value> properties = 2;
+}

@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.aperto.mediacorp.protobuf.protos.ArticleProto
 import com.t.mediacorp2359pocs.R
 import com.t.mediacorp2359pocs.di.NetworkModule
+import com.t.mediacorp2359pocs.mapper.toUiModel
 import com.t.mediacorp2359pocs.model.json.JsonResponse
 import com.t.mediacorp2359pocs.model.ui.UiModel
 import com.t.mediacorp2359pocs.utils.joinToStringWithLineBreak
@@ -42,7 +44,7 @@ class Oc171Activity : AppCompatActivity() {
 
         setUpViews()
 
-        showData(UiModel.dummy())
+        resetViews()
     }
 
     private fun setUpViews() {
@@ -71,10 +73,19 @@ class Oc171Activity : AppCompatActivity() {
 
     private fun callApi(type: Int) {
         resetLog()
+        resetViews()
 
         when (type) {
             TYPE_JSON -> {
                 loadJsonApi()
+            }
+
+            TYPE_PROTO -> {
+                loadProtoApi()
+            }
+
+            TYPE_REST -> {
+                toast("API is not available")
             }
 
             else -> {
@@ -83,7 +94,8 @@ class Oc171Activity : AppCompatActivity() {
     }
 
     private fun loadJsonApi() {
-        val apiService = NetworkModule.createApiService()
+        val mApiService = NetworkModule.createApiService()
+
         val callback = object : Callback<JsonResponse> {
             override fun onResponse(call: Call<JsonResponse>, response: Response<JsonResponse>) {
                 val data = response.body()
@@ -93,13 +105,36 @@ class Oc171Activity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<JsonResponse>, t: Throwable) {
-                toast("ERROR")
-                Timber.e(t)
+                hideLoading()
+                showError(t)
             }
         }
 
         showLoading()
-        apiService.loadJson().enqueue(callback)
+        mApiService.loadJson().enqueue(callback)
+    }
+
+    private fun loadProtoApi() {
+        val mApiService = NetworkModule.createApiServiceProto()
+        val callback = object : Callback<ArticleProto.Article> {
+            override fun onResponse(
+                call: Call<ArticleProto.Article>,
+                response: Response<ArticleProto.Article>
+            ) {
+                val data = response.body()
+                response.logTime()
+                hideLoading()
+                showData(data?.toUiModel())
+            }
+
+            override fun onFailure(call: Call<ArticleProto.Article>, t: Throwable) {
+                hideLoading()
+                showError(t)
+            }
+        }
+
+        showLoading()
+        mApiService.loadProtobuff().enqueue(callback)
     }
 
     private fun showLoading() {
@@ -110,9 +145,18 @@ class Oc171Activity : AppCompatActivity() {
         pbLoading.isGone = true
     }
 
+    private fun showError(t: Throwable) {
+        toast("ERROR: ${t.message}")
+        Timber.e(t)
+    }
+
     private fun resetLog() {
         mReceivedTime = 0L
         mResponseTime = 0L
+    }
+
+    private fun resetViews() {
+        showData(UiModel.dummy())
     }
 
     private fun Response<*>.logTime() {

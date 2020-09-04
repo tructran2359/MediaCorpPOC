@@ -1,8 +1,106 @@
 syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "ArticleProto";
 
-option java_package = "com.proto.model";
-package model;
+import "fragment.proto";
+import "types.proto";
 
+// container for articles and news clips
+message ArticlesContainer {
+    repeated Article articles = 1;
+}
+
+// the article
 message Article {
-  string name = 1;
+
+    // article id
+    int64 id = 1;
+
+    // article title
+    string title = 2;
+
+    // the author
+    // Note: having only a single author is deprectated. Please use field 'authors' instead
+    Author author = 3 [deprecated=true];
+
+    // the authors
+    // Note: having only a single author is deprectated. Please use field 'authors' instead
+    repeated Author authors = 33;
+
+    // reference to feed this article belongs to
+    // note that sponsored articles do not have a feed id
+    int64 feed_id = 4;
+
+    // category name this article belongs to
+    string categoryname = 21;
+
+    // the web url for this article
+    string web_url = 5;
+
+    // optional header images
+    repeated Image header_images = 6;
+
+    // optional header videos
+    repeated Video header_videos = 7;
+
+    // the number of shares
+    int32 number_of_shares = 9;
+
+    // date of creation in unix time stamp format (UTC)
+    int64 created = 10;
+
+    // date of last modification in unix time stamp format (UTC)
+    int64 last_modified = 11;
+
+    // article keywords
+    repeated string keywords = 12;
+
+    // is this article a live developing story
+    bool is_live_developing = 13;
+
+    // is this article a sponsored story
+    bool is_sponsored = 14;
+
+    // the name of the sponsor, can be empty - even if the story is sponsored
+    string sponsor_name = 19;
+
+    // image of sponsor (is_sponsored needs to be 'true')
+    Image sponsor_image = 15;
+
+    // is this an exclusive article
+    bool is_exclusive = 16;
+
+    // is this an analysis article
+    bool is_analysis = 17;
+
+    // is this a news clip article
+    // note that the header_video field needs to be set for this
+    bool is_news_clip = 30;
+
+    // the copyright specifies the news agency the article content comes from
+    // if not set, this article is supposed to come from Channel News Asia
+    // If set this article is considered to be a so called 'wired article', e.g. 'Reuters'
+    string copyright = 18;
+
+    // for full-width commercial articles, which will be displayed as webview (CNA-362)
+    string articletype = 20;
+
+    // article brief (CNA-368)
+    string brief = 23;
+
+    // the fragments this article is build of
+    repeated Fragment fragments = 100;
+
+    // list of topics names, this article recommendation derived from
+    // for the current usage in the personalized news feed, only one topic will set in the list
+    repeated string related_topics = 40;
+
+    // CoreMedia content type
+    string doc_type = 41;
+
+    // IMU ads position
+    string ads_position = 42;
+
+    // CIA keywords
+    repeated string ciaKeywords = 43;
 }

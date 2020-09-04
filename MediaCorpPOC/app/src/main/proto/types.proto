@@ -1,0 +1,135 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "TypesProto";
+
+// the image
+message Image {
+
+    // the image id
+    int64 id = 1;
+
+    // the image ratio
+    string ratio = 2;
+
+    // the image caption
+    string caption = 4;
+
+    // the copyright value
+    string copyright = 5;
+
+    // alternative image url
+    // providing an absolute url for an image outside the scope of cna images
+    string alternative_image_url = 10;
+
+    // CIA keywords
+    repeated string ciaKeywords = 14;
+}
+
+// the video
+message Video {
+
+    // the video id
+    int64 id = 1;
+
+    // the video preview image
+    Image preview = 2;
+
+    // the video url
+    string url = 3;
+
+    // the video duration in milliseconds
+    int64 duration = 4;
+
+    // the video caption
+    string caption = 5;
+
+    // the video title
+    string title = 6;
+
+    // the video hlsurl
+    string hlsurl = 7;
+
+    // the video dashurl
+    string dashurl = 8;
+
+    // the video house id
+    string houseid = 9;
+
+    // vrContent
+    string vrcontent = 10;
+
+    // the Ooyala ID
+    string ooyalaid = 11;
+
+    // the Ooyala pcode
+    string ooyalapcode = 12;
+
+    // the video master referebce key
+    string masterrefid = 13;
+
+    // CIA keywords
+    repeated string ciaKeywords = 14;
+}
+
+// the author
+message Author {
+
+    // the authors name
+    string name = 1;
+
+    // the author image
+    Image image = 2;
+
+    // the author's twitter handle (optional)
+    // note: omit the leading @
+    // example: ChannelNewsAsia
+    string twitter_account = 3;
+
+    // the author's job (optional)
+    string job = 4;
+}
+
+// the citation
+message Citation {
+
+    // the text value
+    string text = 1;
+
+    // the author
+    Author author = 2;
+}
+
+// the extended text with alignment ability
+message ExtendedText {
+
+    enum Alignment {
+        LEFT = 0;
+        RIGHT = 1;
+        CENTER = 2;
+        JUSTIFIED = 3;
+    }
+
+    // the text value
+    string text = 1;
+
+    // the text alignment
+    Alignment alignment = 2;
+}
+
+// the list (with bullet points or numbers)
+message List {
+
+    // is this a numbered list or a bullet list
+    bool is_numbered = 1;
+
+    // the concrete list entries
+    repeated string list_entries = 2;
+}
+
+// container for a list of curated topic names
+message TrendingTopics {
+
+    // the list of trending topic names
+    repeated string list = 1;
+}
+

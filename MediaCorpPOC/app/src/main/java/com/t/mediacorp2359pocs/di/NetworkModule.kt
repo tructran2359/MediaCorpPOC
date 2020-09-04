@@ -12,6 +12,13 @@ object NetworkModule {
         return Retrofit.Builder()
             .baseUrl(endPoint)
             .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    fun providesRetrofitProto(): Retrofit {
+        val endPoint = "https://www.channelnewsasia.com/"
+        return Retrofit.Builder()
+            .baseUrl(endPoint)
             .addConverterFactory(ProtoConverterFactory.create())
             .build()
     }
@@ -22,5 +29,9 @@ object NetworkModule {
 
     fun createApiService(): ApiService {
         return providesApiService(providesRetrofit())
+    }
+
+    fun createApiServiceProto(): ApiService {
+        return providesApiService(providesRetrofitProto())
     }
 }
