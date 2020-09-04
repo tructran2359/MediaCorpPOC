@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option java_package = "com.proto.model";
+package model;
+
+message Article {
+  string name = 1;
+}

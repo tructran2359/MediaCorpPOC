@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.t.mediacorp2359pocs.R
 import kotlinx.android.synthetic.main.fragment_web_view.*
-import androidx.core.view.isVisible
 
 class WebViewFragment : Fragment() {
 

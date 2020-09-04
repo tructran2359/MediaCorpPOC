@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.protobuf'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
@@ -44,7 +45,15 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    sourceSets {
+        main.java.srcDirs += "$projectDir/src/main/proto"
+    }
 }
+
+
+def protobufVersion = '3.12.0'
+def protocVersion = protobufVersion
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -58,7 +67,28 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
+    // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation ('com.squareup.retrofit2:converter-protobuf:2.9.0') {
+        exclude group: 'com.google.protobuf', module: 'protobuf-java'
+    }
 
+    // Protobuff
+    implementation "com.google.protobuf:protobuf-javalite:${protobufVersion}"
+
+}
+
+protobuf {
+    protoc { artifact = "com.google.protobuf:protoc:${protocVersion}" }
+
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java{
+                    option 'lite'
+                }
+            }
+        }
+    }
 }
