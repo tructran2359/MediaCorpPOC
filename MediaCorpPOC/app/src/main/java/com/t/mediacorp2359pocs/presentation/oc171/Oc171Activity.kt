@@ -3,7 +3,9 @@ package com.t.mediacorp2359pocs.presentation.oc171
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.ViewTreeObserver
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.doOnPreDraw
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
+import kotlin.system.measureTimeMillis
 
 class Oc171Activity : AppCompatActivity() {
 
@@ -35,6 +38,9 @@ class Oc171Activity : AppCompatActivity() {
 
     private var mResponseTime = 0L
     private var mReceivedTime = 0L
+    private var mRenderedTime = 0L
+    private var mStartApi = 0L
+
     private var mHeaderImagesAdapter = HeaderImagesAdapter()
     private var mFragmentsAdapter = FragmentsAdapter()
 
@@ -75,6 +81,9 @@ class Oc171Activity : AppCompatActivity() {
         resetLog()
         resetViews()
 
+        mStartApi = System.currentTimeMillis()
+        showLoading()
+
         when (type) {
             TYPE_JSON -> {
                 loadJsonApi()
@@ -86,6 +95,7 @@ class Oc171Activity : AppCompatActivity() {
 
             TYPE_REST -> {
                 toast("API is not available")
+                hideLoading()
             }
 
             else -> {
@@ -101,7 +111,7 @@ class Oc171Activity : AppCompatActivity() {
                 val data = response.body()
                 response.logTime()
                 hideLoading()
-                showData(data?.toUiModel())
+                showData(data?.toUiModel(), true)
             }
 
             override fun onFailure(call: Call<JsonResponse>, t: Throwable) {
@@ -110,7 +120,6 @@ class Oc171Activity : AppCompatActivity() {
             }
         }
 
-        showLoading()
         mApiService.loadJson().enqueue(callback)
     }
 
@@ -121,10 +130,10 @@ class Oc171Activity : AppCompatActivity() {
                 call: Call<ArticleProto.Article>,
                 response: Response<ArticleProto.Article>
             ) {
-                val data = response.body()
                 response.logTime()
+                val data = response.body()
                 hideLoading()
-                showData(data?.toUiModel())
+                showData(data?.toUiModel(), true)
             }
 
             override fun onFailure(call: Call<ArticleProto.Article>, t: Throwable) {
@@ -133,7 +142,6 @@ class Oc171Activity : AppCompatActivity() {
             }
         }
 
-        showLoading()
         mApiService.loadProtobuff().enqueue(callback)
     }
 
@@ -153,20 +161,34 @@ class Oc171Activity : AppCompatActivity() {
     private fun resetLog() {
         mReceivedTime = 0L
         mResponseTime = 0L
+        mStartApi = 0L
+        mRenderedTime = 0L
     }
 
     private fun resetViews() {
+        tvMessage.text = ""
         showData(UiModel.dummy())
     }
 
     private fun Response<*>.logTime() {
         val sentTime = raw().sentRequestAtMillis()
-        mReceivedTime = raw().receivedResponseAtMillis()
-        mResponseTime = mReceivedTime - sentTime
+        val recvTime = raw().receivedResponseAtMillis()
+        mResponseTime = recvTime - sentTime
+        mReceivedTime = System.currentTimeMillis()
     }
 
-    private fun showData(model: UiModel?) {
+    private fun showData(model: UiModel?, needLogTime: Boolean = false) {
         val nonNullModel = model ?: UiModel.dummy()
+        if (needLogTime) {
+            rvFragments.doOnPreDraw {
+                mRenderedTime = System.currentTimeMillis()
+                val message = "Response time: $mResponseTime ms" +
+                    "\nData is received: ${mReceivedTime - mStartApi} ms" +
+                    "\nScreen is rendered: ${mRenderedTime - mStartApi} ms" +
+                    "\nFrom received to rendered: ${mRenderedTime - mReceivedTime} ms"
+                tvMessage.text = message
+            }
+        }
 
         nonNullModel.let { m ->
             tvId.text = m.id

@@ -58,6 +58,11 @@
             >
 
             <TextView
+                android:id="@+id/tvMessage"
+                style="@style/tvContent"
+                />
+
+            <TextView
                 android:text="ID"
                 style="@style/tvLabel"
                 />
