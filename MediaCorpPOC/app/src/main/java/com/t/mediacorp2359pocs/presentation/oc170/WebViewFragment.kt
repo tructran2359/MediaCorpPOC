@@ -45,7 +45,10 @@ class WebViewFragment : Fragment() {
     private fun setUpViews() {
         pbLoading.max = 100
         wvContent.let { wv ->
-            wv.settings.javaScriptEnabled = true
+            wv.settings.let { settings ->
+                settings.javaScriptEnabled = true
+                settings.domStorageEnabled = true
+            }
             wv.webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView?, newProgress: Int) {
                     super.onProgressChanged(view, newProgress)
@@ -61,7 +64,7 @@ class WebViewFragment : Fragment() {
         if (mData.startsWith("https://")) {
             wvContent.loadUrl(mData)
         } else {
-            wvContent.loadData(mData, "text/html", null)
+            wvContent.loadDataWithBaseURL("", mData, "text/html", "UTF-8", "")
         }
     }
 
