@@ -52,6 +52,6 @@ class Oc170Activity : AppCompatActivity() {
     private fun setUpViews() {
         val adapter = PageAdapter(supportFragmentManager, IFRAMES)
         vpContent.adapter = adapter
-        vpContent.offscreenPageLimit = adapter.count
+        vpContent.offscreenPageLimit = 3
     }
 }

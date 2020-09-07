@@ -47,14 +47,19 @@ class WebViewFragment : Fragment() {
         wvContent.let { wv ->
             wv.settings.let { settings ->
                 settings.javaScriptEnabled = true
-                settings.domStorageEnabled = true
+//                settings.setAppCacheEnabled(true)
+//                settings.setAppCachePath(requireContext().applicationContext.cacheDir.path)
+//                settings.cacheMode = WebSettings.LOAD_DEFAULT
             }
             wv.webChromeClient = object : WebChromeClient() {
                 override fun onProgressChanged(view: WebView?, newProgress: Int) {
                     super.onProgressChanged(view, newProgress)
-                    val isLoading = newProgress != 0 && newProgress != 100
-                    pbLoading.progress = newProgress
-                    pbLoading.isVisible = isLoading
+                    pbLoading?.let { pb ->
+                        val isLoading = newProgress != 0 && newProgress != 100
+                        pb.progress = newProgress
+                        pb.isVisible = isLoading
+                    }
+
                 }
             }
         }
