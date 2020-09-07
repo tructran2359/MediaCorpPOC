@@ -16,7 +16,10 @@ import com.t.mediacorp2359pocs.mapper.toUiModel
 import com.t.mediacorp2359pocs.model.json.JsonResponse
 import com.t.mediacorp2359pocs.model.ui.UiModel
 import com.t.mediacorp2359pocs.utils.joinToStringWithLineBreak
+import com.t.mediacorp2359pocs.utils.openExternalBrowser
+import com.t.mediacorp2359pocs.utils.textAsString
 import com.t.mediacorp2359pocs.utils.toast
+import com.t.mediacorp2359pocs.utils.underline
 import kotlinx.android.synthetic.main.activity_oc171.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,6 +30,9 @@ import kotlin.system.measureTimeMillis
 class Oc171Activity : AppCompatActivity() {
 
     companion object {
+
+        const val BASE_URL = "https://www.channelnewsasia.com"
+
         fun getLaunchIntent(context: Context): Intent {
             return Intent(context, Oc171Activity::class.java)
         }
@@ -54,6 +60,12 @@ class Oc171Activity : AppCompatActivity() {
     }
 
     private fun setUpViews() {
+
+        tvWebUrl.underline()
+        tvWebUrl.setOnClickListener {
+            onWebUrlClick(tvWebUrl.textAsString())
+        }
+
         rvHeaderImages.let { rv ->
             rv.layoutManager = LinearLayoutManager(this)
             rv.adapter = mHeaderImagesAdapter
@@ -184,8 +196,8 @@ class Oc171Activity : AppCompatActivity() {
                 mRenderedTime = System.currentTimeMillis()
                 val message = "Response time: $mResponseTime ms" +
                     "\nData is received: ${mReceivedTime - mStartApi} ms" +
-                    "\nScreen is rendered: ${mRenderedTime - mStartApi} ms" +
-                    "\nFrom received to rendered: ${mRenderedTime - mReceivedTime} ms"
+                    "\nScreen is rendered: ${mRenderedTime - mReceivedTime} ms" +
+                    "\nTotal time: ${mRenderedTime - mStartApi} ms"
                 tvMessage.text = message
             }
         }
@@ -209,6 +221,21 @@ class Oc171Activity : AppCompatActivity() {
             tvCiaKeywords.text = m.ciaKeywords.joinToStringWithLineBreak()
 
             mFragmentsAdapter.items = m.fragments
+        }
+    }
+
+    private fun onWebUrlClick(url: String) {
+        when {
+            url.isEmpty() -> {
+                toast("Empty Url")
+            }
+            url.startsWith('/') -> {
+                val fullUrl = BASE_URL + url
+                openExternalBrowser(fullUrl)
+            }
+            else -> {
+                openExternalBrowser(url)
+            }
         }
     }
 }

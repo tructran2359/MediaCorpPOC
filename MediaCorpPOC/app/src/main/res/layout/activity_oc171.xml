@@ -104,6 +104,7 @@
                 android:id="@+id/tvWebUrl"
                 tools:text="13073470"
                 style="@style/tvContent"
+                android:textColor="#2D77C6"
                 />
 
             <TextView
