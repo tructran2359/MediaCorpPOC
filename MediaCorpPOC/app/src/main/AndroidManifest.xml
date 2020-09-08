@@ -29,6 +29,8 @@
         <activity android:name=".presentation.oc170.Oc170Activity" />
 
         <activity android:name=".presentation.oc171.Oc171Activity"/>
+
+        <activity android:name=".presentation.oc171.Oc171LargeDataActivity"/>
     </application>
 
 </manifest>

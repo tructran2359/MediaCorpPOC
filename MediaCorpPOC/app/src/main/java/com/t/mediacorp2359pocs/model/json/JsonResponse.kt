@@ -39,3 +39,71 @@ data class JsonResponse(
         )
     }
 }
+
+class LargeJsonResponse : HashMap<String, Any>()
+
+const val SPACE = '*'
+
+fun Map<*,*>.flatten(prefix: String = ""): List<Data> {
+    val list = arrayListOf<Data>()
+    forEach { entry ->
+        list.add(Key(prefix + entry.key.toString()))
+
+        when(entry.value) {
+            is Map<*, *> -> {
+                list.addAll((entry.value as  Map<*,*>).flatten(prefix + SPACE))
+            }
+
+            is List<*> -> {
+                list.addAll((entry.value as List<*>).flatten(prefix + SPACE))
+            }
+
+            else -> {
+                list.add(Value(prefix + entry.value.toString()))
+            }
+        }
+    }
+    return list
+}
+
+fun Any.flatten(prefix: String = ""): List<Data> {
+    val list = arrayListOf<Data>()
+
+    when(this) {
+        is Map<*, *> -> {
+            list.addAll(this.flatten(prefix))
+        }
+
+        is List<*> -> {
+            forEach {
+                it?.let { data ->
+                    list.addAll(data.flatten(prefix))
+                }
+
+            }
+        }
+
+        else -> {
+            list.add(Value(prefix + this.toString()))
+        }
+    }
+
+    return list
+}
+
+sealed class Data(val data: String) {
+    override fun toString(): String {
+        return data
+    }
+}
+data class Key(val key: String): Data(key){
+    override fun toString(): String {
+        return data
+    }
+}
+
+data class Value(val value: String): Data(value){
+    override fun toString(): String {
+        return data
+    }
+}

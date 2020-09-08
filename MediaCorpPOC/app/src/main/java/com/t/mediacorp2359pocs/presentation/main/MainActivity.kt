@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.t.mediacorp2359pocs.R
 import com.t.mediacorp2359pocs.presentation.oc170.Oc170Activity
 import com.t.mediacorp2359pocs.presentation.oc171.Oc171Activity
+import com.t.mediacorp2359pocs.presentation.oc171.Oc171LargeDataActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +23,10 @@ class MainActivity : AppCompatActivity() {
 
         btnOc171.setOnClickListener {
             startActivity(Oc171Activity.getLaunchIntent(this))
+        }
+
+        btnOc171LargeData.setOnClickListener {
+            startActivity(Oc171LargeDataActivity.getLaunchIntent(this))
         }
     }
 }

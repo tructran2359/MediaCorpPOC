@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="item_offset">12dp</dimen>
+
+    <dimen name="space_x1">4dp</dimen>
+
+</resources>
