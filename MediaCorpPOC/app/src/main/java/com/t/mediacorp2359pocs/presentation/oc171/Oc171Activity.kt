@@ -1,5 +1,6 @@
 package com.t.mediacorp2359pocs.presentation.oc171
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -21,6 +22,8 @@ import com.t.mediacorp2359pocs.utils.textAsString
 import com.t.mediacorp2359pocs.utils.toast
 import com.t.mediacorp2359pocs.utils.underline
 import kotlinx.android.synthetic.main.activity_oc171.*
+import kotlinx.android.synthetic.main.item_fragment.*
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -106,8 +109,7 @@ class Oc171Activity : AppCompatActivity() {
             }
 
             TYPE_REST -> {
-                toast("API is not available")
-                hideLoading()
+                loadRestApi()
             }
 
             else -> {
@@ -157,6 +159,26 @@ class Oc171Activity : AppCompatActivity() {
         mApiService.loadProtobuff().enqueue(callback)
     }
 
+    private fun loadRestApi() {
+        val apiService = NetworkModule.createApiService()
+
+        val callback = object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                response.logTime()
+                val string = response.body()?.string() ?: ""
+                hideLoading()
+                showRest(string)
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                hideLoading()
+                showError(t)
+            }
+        }
+
+        apiService.loadRest().enqueue(callback)
+    }
+
     private fun showLoading() {
         pbLoading.isVisible = true
     }
@@ -189,15 +211,28 @@ class Oc171Activity : AppCompatActivity() {
         mReceivedTime = System.currentTimeMillis()
     }
 
+    @SuppressLint("SetTextI18n")
+    private fun showRest(string: String) {
+        tvRest.isVisible = true
+        llContent.isGone = true
+        tvRest.doOnPreDraw {
+            mRenderedTime = System.currentTimeMillis()
+            val logMessage = getLogMessage()
+            tvRest.text = logMessage +
+                "\nContent:" +
+                "\n$string"
+        }
+    }
+
     private fun showData(model: UiModel?, needLogTime: Boolean = false) {
+        tvRest.isGone = true
+        llContent.isVisible = true
+
         val nonNullModel = model ?: UiModel.dummy()
         if (needLogTime) {
             rvFragments.doOnPreDraw {
                 mRenderedTime = System.currentTimeMillis()
-                val message = "Response time: $mResponseTime ms" +
-                    "\nData is received: ${mReceivedTime - mStartApi} ms" +
-                    "\nScreen is rendered: ${mRenderedTime - mReceivedTime} ms" +
-                    "\nTotal time: ${mRenderedTime - mStartApi} ms"
+                val message = getLogMessage()
                 tvMessage.text = message
             }
         }
@@ -222,6 +257,13 @@ class Oc171Activity : AppCompatActivity() {
 
             mFragmentsAdapter.items = m.fragments
         }
+    }
+
+    private fun getLogMessage(): String {
+        return "Response time: $mResponseTime ms" +
+            "\nData is received: ${mReceivedTime - mStartApi} ms" +
+            "\nScreen is rendered: ${mRenderedTime - mReceivedTime} ms" +
+            "\nTotal time: ${mRenderedTime - mStartApi} ms"
     }
 
     private fun onWebUrlClick(url: String) {
