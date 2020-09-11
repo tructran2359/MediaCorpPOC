@@ -6,13 +6,17 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 
 class PageAdapter(
     fm: FragmentManager,
-    private val iframes: List<String>
+    private val iframes: List<Pair<String, String>>
 ) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     override fun getCount(): Int {
         return iframes.size
     }
 
     override fun getItem(position: Int): Fragment {
-        return WebViewFragment.newInstance(iframes[position])
+        return WebViewFragment.newInstance(iframes[position].second)
+    }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return iframes[position].first
     }
 }

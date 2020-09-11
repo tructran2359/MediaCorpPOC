@@ -32,11 +32,11 @@ class Oc170Activity : AppCompatActivity() {
 
 
         val IFRAMES = listOf(
-            BAD_SAMPLE_IFRAME_1,
-            BAD_SAMPLE_IFRAME_2,
-            JSON_API_PARAGRAPH_DEFAULT,
-            SAMPLE_REST_EXPORT_VIEWS_1,
-            SAMPLE_REST_EXPORT_VIEWS_2
+            Pair("BAD_SAMPLE_IFRAME_1", BAD_SAMPLE_IFRAME_1),
+            Pair("BAD_SAMPLE_IFRAME_2", BAD_SAMPLE_IFRAME_2),
+            Pair("JSON_API_PARAGRAPH_DEFAULT", JSON_API_PARAGRAPH_DEFAULT),
+            Pair("SAMPLE_REST_EXPORT_VIEWS_1", SAMPLE_REST_EXPORT_VIEWS_1),
+            Pair("SAMPLE_REST_EXPORT_VIEWS_2", SAMPLE_REST_EXPORT_VIEWS_2)
         )
     }
 
@@ -45,13 +45,12 @@ class Oc170Activity : AppCompatActivity() {
         setContentView(R.layout.activity_oc170)
 
         setUpViews()
-
-        toast("Swipe to move between pages\n<-   ->")
     }
 
     private fun setUpViews() {
         val adapter = PageAdapter(supportFragmentManager, IFRAMES)
         vpContent.adapter = adapter
         vpContent.offscreenPageLimit = 3
+        tabLayout.setupWithViewPager(vpContent)
     }
 }
