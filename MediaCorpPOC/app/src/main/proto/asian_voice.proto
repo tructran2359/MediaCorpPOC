@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "AsianVoiceProto";
+
+import "article.proto";
+import "types.proto";
+
+// the article
+message AsianVoice {
+
+    // the citation
+    Citation citation = 1;
+
+    // the article
+    Article article = 2;
+}

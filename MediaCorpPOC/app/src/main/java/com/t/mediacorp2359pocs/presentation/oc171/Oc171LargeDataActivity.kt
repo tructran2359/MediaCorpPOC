@@ -2,24 +2,21 @@ package com.t.mediacorp2359pocs.presentation.oc171
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.view.View
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.aperto.mediacorp.protobuf.protos.IndexProto
 import com.t.mediacorp2359pocs.R
 import com.t.mediacorp2359pocs.di.NetworkModule
 import com.t.mediacorp2359pocs.model.json.LargeJsonResponse
 import com.t.mediacorp2359pocs.model.json.flatten
+import com.t.mediacorp2359pocs.utils.mapper.toUi
 import com.t.mediacorp2359pocs.utils.toast
 import kotlinx.android.synthetic.main.activity_oc171_large_data.btnJson
 import kotlinx.android.synthetic.main.activity_oc171_large_data.btnProto
-import kotlinx.android.synthetic.main.activity_oc171_large_data.btnRest
 import kotlinx.android.synthetic.main.activity_oc171_large_data.pbLoading
 import kotlinx.android.synthetic.main.activity_oc171_large_data.rvContent
 import kotlinx.android.synthetic.main.activity_oc171_large_data.tvLog
@@ -49,6 +46,8 @@ class Oc171LargeDataActivity : AppCompatActivity() {
     private var mStartApi = 0L
 
     private val mAdapter = ResponseAdapter()
+    private val mApiServiceJson = NetworkModule.createApiService()
+    private val mApiServiceProto = NetworkModule.createApiServiceProto()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,10 +62,6 @@ class Oc171LargeDataActivity : AppCompatActivity() {
 
         btnJson.setOnClickListener {
             callApi(type = TYPE_JSON)
-        }
-
-        btnRest.setOnClickListener {
-            callApi(type = TYPE_REST)
         }
 
         btnProto.setOnClickListener {
@@ -95,10 +90,6 @@ class Oc171LargeDataActivity : AppCompatActivity() {
                 loadProtoApi()
             }
 
-            TYPE_REST -> {
-                loadRestApi()
-            }
-
             else -> {
                 hideLoading()
             }
@@ -106,7 +97,6 @@ class Oc171LargeDataActivity : AppCompatActivity() {
     }
 
     private fun loadLargeJsonApi() {
-        val apiService = NetworkModule.createApiService()
 
         val callback = object : Callback<LargeJsonResponse> {
             override fun onResponse(
@@ -115,7 +105,6 @@ class Oc171LargeDataActivity : AppCompatActivity() {
             ) {
                 val data = response.body()
                 response.logTime()
-                hideLoading()
 
                 showData(data)
             }
@@ -126,22 +115,38 @@ class Oc171LargeDataActivity : AppCompatActivity() {
             }
         }
 
-        apiService.loadLargeJson().enqueue(callback)
+        mApiServiceJson.loadLargeJson().enqueue(callback)
     }
 
-    private fun showData(data: LargeJsonResponse?) {
+    private fun showData(data: Map<String, Any>?) {
         rvContent.doOnPreDraw {
             mRenderedTime = System.currentTimeMillis()
             tvLog.text = getLogMessage()
+            hideLoading()
         }
 
         mAdapter.items = data?.flatten() ?: emptyList()
     }
 
     private fun loadProtoApi() {
-    }
+        val callback = object : Callback<IndexProto.Index> {
+            override fun onResponse(
+                call: Call<IndexProto.Index>,
+                response: Response<IndexProto.Index>
+            ) {
+                val data = response.body()
+                response.logTime()
+                val dataMap = data?.toUi()
+                showData(dataMap)
+            }
 
-    private fun loadRestApi() {
+            override fun onFailure(call: Call<IndexProto.Index>, t: Throwable) {
+                hideLoading()
+                showError(t)
+            }
+        }
+
+        mApiServiceProto.loadLargeProtobuff().enqueue(callback)
     }
 
     private fun showLoading() {

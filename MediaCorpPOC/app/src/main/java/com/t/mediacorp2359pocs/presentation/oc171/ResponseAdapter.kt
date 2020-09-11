@@ -43,12 +43,15 @@ class JsonResponseVH(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(data: Data) {
         itemView.run {
-            var content = data.data
-            val level = content.indexOfFirst { it != SPACE }
-            val space = context.resources.getDimensionPixelSize(R.dimen.item_offset)
-            if (level != 0) {
-                content = content.substring(startIndex = level)
+            val content = data.data.let {
+                if (it.isEmpty()) {
+                    "DEBUG: Empty String"
+                } else {
+                    it
+                }
             }
+            val level = data.level
+            val space = context.resources.getDimensionPixelSize(R.dimen.item_offset)
             tvContent.text = content.toHtmlSpanned()
             val layoutParams = tvContent.layoutParams as LinearLayout.LayoutParams
             layoutParams.marginStart = level * space

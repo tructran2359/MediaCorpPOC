@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "NavigationProto";
+
+import "section_metadata.proto";
+import "topic.proto";
+
+message Navigation {
+
+    SectionMetaData meta = 1;
+
+    bool is_special_report = 2;
+
+    repeated Topic topics = 3;
+}

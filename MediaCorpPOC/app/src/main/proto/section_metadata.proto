@@ -1,0 +1,28 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "SectionMetaDataProto";
+
+import "types.proto";
+
+// The meta data
+message SectionMetaData {
+
+    // section data id
+    int64 id = 1;
+
+    // section title
+    string title = 2;
+
+    // date of last modification in unix time stamp format (UTC)
+    int64 last_modified = 3;
+
+    // color in hex format. Eg.: #RRGGBB
+    string color = 4;
+
+    // optional header image. Will appear in some feeds.
+    Image header_image = 5;
+
+    // optional section url
+    // can be used for special reports for example
+    string section_url = 6;
+}

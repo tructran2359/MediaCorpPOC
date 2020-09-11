@@ -1,0 +1,42 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "IndexProto";
+
+import "feed.proto";
+import "topic.proto";
+import "navigation.proto";
+
+// the index
+message Index {
+
+    // common base url for images
+    string base_image_url = 1;
+
+    // common base url for articles
+    string base_article_url = 2;
+
+    repeated Navigation navigation_feeds = 3;
+
+    // dynamic sections
+    repeated Feed feeds = 50;
+
+    // --- static feeds ---
+
+    // top stories feed
+    Topic top_stories = 100;
+
+    // latest news feed
+    Topic latest_news = 101;
+
+    // most popular feed
+    Topic most_popular = 102;
+
+    // article container for miscellaneous articles (e.g. Terms&Conditions)
+    Topic misc = 110;
+
+    // article container for miscellaneous articles (e.g. Privacy Policy)
+    Topic misc1 = 120;
+
+    // in focus feed
+    repeated Topic in_focus = 220;
+}

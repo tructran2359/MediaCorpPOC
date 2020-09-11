@@ -1,0 +1,36 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "WatchIndexProto";
+
+import "tv_show.proto";
+import "episode.proto";
+import "article.proto";
+
+// the watch section
+message WatchIndex {
+
+    // Recommended TvShow
+    // note: this tv show does not carry episodes in this context
+    TvShow recommended_tv_show = 1;
+
+    // featured TvShow
+    // note: this tv show does not carry episodes in this context
+    TvShow featured_show = 2;
+
+    // recently aired episodes
+    repeated Episode latest_episodes = 4;
+
+    // Curated catch up most popular tv show.
+    // Up to 6 tv shows can be delivered here or not at all
+    // note: those tv shows do not carry episodes in this context
+    repeated TvShow featured_tv_shows = 5;
+
+    // default set of news clips
+    repeated Article news_clips = 6;
+
+    // url to the stream of the international version of Channel NewsAsia
+    string live_tv_stream_url = 10;
+
+    // short teaser text for recommend tv show, e.g. "don't miss it"
+    string recommended_tv_show_teaser_text = 14;
+}

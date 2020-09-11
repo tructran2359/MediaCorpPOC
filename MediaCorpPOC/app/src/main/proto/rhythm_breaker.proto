@@ -1,0 +1,35 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "RhythmBreakerBannerProto";
+
+// the rhythm breaker banner
+message RhythmBreakerBanner {
+
+    // the title
+    string title = 1;
+
+    // the description
+    string description = 2;
+
+    // the extended description, can be used for show times
+    string extended_description = 3;
+
+    // the image id
+    int64 image_id = 5;
+
+    // should a call to action button be displayed
+    bool has_cta_button = 10;
+
+    // should the call to action button have a label, which differs from the default
+    string button_label = 11;
+
+    // call to action url.
+    // possible formats:
+    //  * http://www.some-web-url.com/xy
+    //  * cna://article/12356
+    //  * cna://tv-show/34567
+    string cta_url = 12;
+
+    // the position this item needs to show in the topic list
+    string position = 13;
+}

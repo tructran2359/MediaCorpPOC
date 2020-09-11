@@ -1,0 +1,43 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "PodcastProto";
+
+import "types.proto";
+import "podcast_episode.proto";
+
+// container for podcast shows
+message PodcastContainer {
+    repeated Podcast podcasts = 1;
+}
+
+// the podcast show, containind
+message Podcast {
+
+    // podcast id
+    int64 id = 1;
+
+    // episode title
+    string title = 2;
+
+    // air times, e.g. "Every Sat, 7:30PM (GMT +8)
+    string air_times = 3;
+
+    // teaser text, used for teasing podcasts.
+    // for a long description use the field 'description.
+    string teaser_text = 4;
+
+    // teaser image
+    Image teaser_image = 6;
+
+    // the description of this show
+    string description = 7;
+
+    // website url of this show
+    string show_url = 8;
+
+    // rss/xml feed url of the iTunes podcast
+    string podcast_feed_url = 9;
+
+    // episodes for this show
+    repeated PodcastEpisode episodes = 10;
+}

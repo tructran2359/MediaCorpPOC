@@ -1,0 +1,20 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "FeedProto";
+
+import "topic.proto";
+import "section_metadata.proto";
+
+// the feed aka section, category
+message Feed {
+
+    // meta data for this feed
+    SectionMetaData meta = 1;
+
+    // is this a special report feed
+    bool is_special_report = 2;
+
+    // sorted list of topics
+    repeated Topic topics = 11;
+
+}

@@ -44,65 +44,62 @@ class LargeJsonResponse : HashMap<String, Any>()
 
 const val SPACE = '*'
 
-fun Map<*,*>.flatten(prefix: String = ""): List<Data> {
+fun Map<*,*>.flatten(level: Int = 0): List<Data> {
     val list = arrayListOf<Data>()
     forEach { entry ->
-        list.add(Key(prefix + entry.key.toString()))
+        list.add(Key(level, entry.key.toString()))
 
         when(entry.value) {
             is Map<*, *> -> {
-                list.addAll((entry.value as  Map<*,*>).flatten(prefix + SPACE))
+                list.addAll((entry.value as  Map<*,*>).flatten(level + 1))
             }
 
             is List<*> -> {
-                list.addAll((entry.value as List<*>).flatten(prefix + SPACE))
+                list.addAll((entry.value as List<*>).flatten(level + 1))
             }
 
             else -> {
-                list.add(Value(prefix + entry.value.toString()))
+                list.add(Value(level, entry.value.toString()))
             }
         }
     }
     return list
 }
 
-fun Any.flatten(prefix: String = ""): List<Data> {
+fun Any.flatten(level: Int = 0): List<Data> {
     val list = arrayListOf<Data>()
 
     when(this) {
         is Map<*, *> -> {
-            list.addAll(this.flatten(prefix))
+            list.addAll(this.flatten(level))
         }
 
         is List<*> -> {
             forEach {
                 it?.let { data ->
-                    list.addAll(data.flatten(prefix))
+                    list.addAll(data.flatten(level))
                 }
 
             }
         }
 
         else -> {
-            list.add(Value(prefix + this.toString()))
+            list.add(Value(level, this.toString()))
         }
     }
 
     return list
 }
 
-sealed class Data(val data: String) {
-    override fun toString(): String {
-        return data
-    }
-}
-data class Key(val key: String): Data(key){
+sealed class Data(val level: Int, val data: String)
+
+class Key(level: Int, key: String): Data(level, key){
     override fun toString(): String {
         return data
     }
 }
 
-data class Value(val value: String): Data(value){
+class Value(level: Int, value: String): Data(level, value){
     override fun toString(): String {
         return data
     }

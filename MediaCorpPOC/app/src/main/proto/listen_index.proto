@@ -1,0 +1,15 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "ListenIndexProto";
+
+import "podcast_episode.proto";
+
+// the listen index
+message ListenIndex {
+
+    // featured podcast episode
+    PodcastEpisode featured_episode = 1;
+
+    // recently aired podcast episodes
+    repeated PodcastEpisode latest_episodes = 4;
+}

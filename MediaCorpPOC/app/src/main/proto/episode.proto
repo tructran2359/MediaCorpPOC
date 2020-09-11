@@ -1,0 +1,55 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "EpisodeProto";
+
+import "types.proto";
+
+// container for episodes
+message EpisodesContainer {
+    repeated Episode episodes = 1;
+}
+
+// the episode
+message Episode {
+
+    // episode id
+    int64 id = 1;
+
+    // episode title
+    string title = 2;
+
+    // the description of this episode
+    string description = 3;
+
+    // the number of this episode; may be empty
+    string number = 4;
+
+    // the web url for this episode
+    string web_url = 5;
+
+    // date of creation in unix time stamp format (UTC)
+    int64 created = 6;
+
+    // is this a web exclusive episode
+    bool is_web_exclusive = 7;
+
+    // video including the teaser image;
+    // the video url may be empty. This might happen due to legal issues. In this case no video and video length can be
+    // displayed
+    Video video = 10;
+
+    // defines the name of the subshow(s) this episode belongs to.
+    // a sub show is a hierarchical element which has a tv show or another sub show as parent element. Episodes or other
+    // sub shows can belong to that sub show as children.
+    // for the apps only one sub show hierarchy level is provided. If there is more then one layer in the original model, it
+    // will be flattened to one layer by the backend.
+    // note that in general there is only one sub show or none at all. On rare occasions it is also possible that one episode
+    // belongs to more then 1 sub show.
+    repeated string sub_shows = 20;
+
+    // id of the tv show this episode belongs to
+    int64 tv_show_id = 30;
+
+    // title of the tv show this episode belongs to
+    string tv_show_title = 31;
+}

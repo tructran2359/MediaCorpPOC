@@ -1,0 +1,52 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "TvShowProto";
+
+import "types.proto";
+import "episode.proto";
+
+// container for tv shows
+message TvShowsContainer {
+    repeated TvShow tv_shows = 1;
+}
+
+// the tv show / series
+message TvShow {
+
+    // tv show id
+    int64 id = 1;
+
+    // episode title
+    string title = 2;
+
+    // air times, e.g. "Every Sat, 7:30PM (GMT +8)
+    string air_times = 3;
+
+    // teaser text, used for teasing tv shows.
+    // for a long description use the field 'description.
+    string teaser_text = 4;
+
+    // teaser video including the teaser image
+    Video teaser_video = 5;
+
+    // teaser image
+    Image teaser_image = 6;
+
+    // the description of this show
+    string description = 7;
+
+    // website url of this show
+    string show_url = 8;
+
+    // episodes for this shwow
+    repeated Episode episodes = 10;
+
+    // web exlusives for this shwow
+    repeated Episode web_exclusive_episodes = 11;
+
+    // is this a sponsored tv show
+    bool is_sponsored = 20;
+
+    // html fragments for sponsored tv shows
+    repeated string sponsored_html_fragments = 21;
+}

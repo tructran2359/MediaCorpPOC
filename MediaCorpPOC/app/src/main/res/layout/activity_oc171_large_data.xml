@@ -16,18 +16,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnRest"
-        android:text="JSON"
-        />
-
-    <Button
-        android:id="@+id/btnRest"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnJson"
         app:layout_constraintEnd_toStartOf="@+id/btnProto"
-        android:text="REST"
+        android:text="JSON"
         />
 
     <Button
@@ -35,7 +25,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnRest"
+        app:layout_constraintStart_toEndOf="@+id/btnJson"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="PROTOBUFF"
         />

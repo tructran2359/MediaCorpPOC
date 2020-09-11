@@ -1,0 +1,49 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "PodcastEpisodeProto";
+
+import "types.proto";
+
+// container for podcast episodes
+message PodcastEpisodesContainer {
+    repeated PodcastEpisode episodes = 1;
+}
+
+// the podcast episode
+message PodcastEpisode {
+
+    // episode id
+    int64 id = 1;
+
+    // episode title
+    string title = 2;
+
+    // the description of this episode
+    string description = 3;
+
+    // the number of this episode; may be empty
+    string number = 4;
+
+    // the web url for this episode
+    string web_url = 5;
+
+    // date of creation in unix time stamp format (UTC)
+    int64 created = 6;
+
+    // the episode length in milliseconds
+    int64 duration = 7;
+
+    // the episode show times; may be empty
+    string show_times = 8;
+
+    // id of the podcast this episode belongs to
+    int64 podcast_id = 30;
+
+    // title of the podcast this episode belongs to
+    string podcast_title = 31;
+
+    // image of the podcast this episode belongs to
+    Image podcast_image = 32;
+
+    string page_url = 33;
+}

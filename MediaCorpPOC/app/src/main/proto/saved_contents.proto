@@ -1,0 +1,28 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "SavedContentsProto";
+
+import "tv_show.proto";
+import "episode.proto";
+import "podcast_episode.proto";
+import "article.proto";
+
+// container for a list of user bookmarked topics
+message SavedContents {
+
+    // list of articles (McNewsArticle), which have beed saved
+    repeated Article articles = 1;
+
+    // list of news clips (McVideo), which have beed saved
+    repeated Article news_clips = 2;
+
+    // list of tv shows (McTvShow), which have beed saved
+    repeated TvShow tv_shows = 3 ;
+
+    // list of episodes (McTvVideo / McEpisode), which have beed saved
+    repeated Episode episodes = 4;
+
+    // list of podcast episodes, which have beed saved
+    repeated PodcastEpisode podcast_episodes = 5;
+}
+

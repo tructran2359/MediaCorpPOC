@@ -1,0 +1,72 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "TopicProto";
+
+import "article.proto";
+import "asian_voice.proto";
+import "rhythm_breaker.proto";
+import "section_metadata.proto";
+import "podcast_episode.proto";
+
+// the topic
+message Topic {
+
+    // possible topic types
+    enum TopicType {
+
+        // topic type is unknown
+        // Note: we need to set this since protobuf v3 needs to start with index 0
+        // and protobuf clients happen to be unable to distinguish
+        // between 0 and enum without a value
+        UNDEFINED = 0;
+
+        // top stories
+        TOP_STORIES = 1;
+
+        // curated topic
+        CURATED = 2;
+
+        // latest news
+        LATEST = 3;
+
+        // in focus
+        IN_FOCUS = 4;
+
+        // most popular
+        MOST_POPULAR = 5;
+
+        // special report
+        SPECIAL_REPORT = 6;
+
+        // personalized news feed, aka 'My News Feed'
+        MY_NEWS_FEED = 7;
+
+        // topic container for the topic landing page
+        // contains articles regarding one topic keyword
+        TAGGED_TOPIC = 8;
+
+        // miscellaneous
+        MISC = 10;
+
+        // carousel
+        CAROUSEL = 20;
+    }
+
+    // the meta data from topic
+    SectionMetaData meta = 1;
+
+    // the type of topic
+    TopicType topicType = 2;
+
+    // the array of articles
+    repeated Article articles = 10;
+
+    // the array of asian voices
+    repeated AsianVoice asianVoices = 11;
+
+    // the array of rhythm breaker banners
+    repeated RhythmBreakerBanner rhythmBreakerBanners = 12;
+
+    // array of headline audio news
+    repeated PodcastEpisode headlineNews = 13;
+}

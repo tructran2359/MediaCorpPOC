@@ -1,0 +1,37 @@
+syntax = "proto3";
+option java_package = "com.aperto.mediacorp.protobuf.protos";
+option java_outer_classname = "BreakingNewsProto";
+
+// container for breaking news and developing news
+message NewsContainer {
+
+    // breaking news and developing news
+    repeated BreakingNews breaking_news = 1;
+}
+
+// the topic
+message BreakingNews {
+
+    // possible breaking news types
+    enum BreakingNewsType {
+
+        // Breaking news may or may not be tagged to an article.
+        // It can be an independent headline without an article page.
+        BREAKING_NEWS = 0;
+
+        // Developing news are always tagged to an article
+        DEVELOPING_NEWS = 1;
+    }
+
+    // the id of this breaking news
+    int64 id = 1;
+
+    // the meta data from topic
+    BreakingNewsType breaking_news_type = 2;
+
+    // the breaking news text, limited to 160 characters
+    string headline = 3;
+
+    // article id; this can be empty for 'breaking news' but is mandatory for 'developing news'
+    int64 article_id = 4;
+}
