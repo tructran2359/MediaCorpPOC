@@ -15,4 +15,8 @@ fun IndexProto.Index.toUi(): Map<String, Any> {
         "misc1" to this.misc1.toUi(),
         "inFocus" to this.inFocusList.map { it.toUi() }
     )
+
+//    return mapOf(
+//        "navigationFeedsList" to this.navigationFeedsList.map { it.toUi() }
+//    )
 }
