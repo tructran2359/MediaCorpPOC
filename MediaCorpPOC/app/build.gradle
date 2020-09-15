@@ -12,8 +12,8 @@ android {
         applicationId "com.t.mediacorp2359pocs"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 5
-        versionName "0.0.5"
+        versionCode 6
+        versionName "0.0.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
