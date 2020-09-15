@@ -119,13 +119,15 @@ class Oc171LargeDataActivity : AppCompatActivity() {
     }
 
     private fun showData(data: Map<String, Any>?) {
+        val list = data?.flatten() ?: emptyList()
+        val startRendering = System.currentTimeMillis()
         rvContent.doOnPreDraw {
-            mRenderedTime = System.currentTimeMillis()
+            mRenderedTime = System.currentTimeMillis() - startRendering
             tvLog.text = getLogMessage()
             hideLoading()
         }
 
-        mAdapter.items = data?.flatten() ?: emptyList()
+        mAdapter.items = list
     }
 
     private fun loadProtoApi() {
@@ -176,13 +178,14 @@ class Oc171LargeDataActivity : AppCompatActivity() {
         val sentTime = raw().sentRequestAtMillis()
         val recvTime = raw().receivedResponseAtMillis()
         mResponseTime = recvTime - sentTime
-        mReceivedTime = System.currentTimeMillis()
+        mReceivedTime = System.currentTimeMillis() - mStartApi
     }
 
     private fun getLogMessage(): String {
         return "Response time: $mResponseTime ms" +
-            "\nData is received: ${mReceivedTime - mStartApi} ms" +
-            "\nScreen is rendered: ${mRenderedTime - mReceivedTime} ms" +
-            "\nTotal time: ${mRenderedTime - mStartApi} ms"
+            "\nData is received: $mReceivedTime ms" +
+            "\nView count: ${mAdapter.itemCount} ms" +
+            "\nScreen is rendered: $mRenderedTime ms" +
+            "\nTotal time: ${mRenderedTime + mReceivedTime} ms"
     }
 }
