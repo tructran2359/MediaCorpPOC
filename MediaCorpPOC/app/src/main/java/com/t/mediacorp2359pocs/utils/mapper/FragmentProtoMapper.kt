@@ -24,7 +24,7 @@ fun Map<String, FragmentsProto.Fragment.Value>.toUi(): Map<String, Any> {
             FragmentsProto.Fragment.Key.HTML.name -> value.asString
             else -> ""
         }
-        map[key] = value
+        map[key] = newValue
     }
     return map
 }
