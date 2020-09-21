@@ -26,4 +26,10 @@ interface ApiService {
 
     @GET
     fun loadLargeProtobuff(@Url url: String = "https://www.channelnewsasia.com/blueprint/servlet/protobuf/index?extend=true"): Call<IndexProto.Index>
+
+    @GET
+    fun loadJson0(@Url url: String = "https://demo3704578.mockable.io/json"): Call<LargeJsonResponse>
+
+    @GET
+    fun loadRest0(@Url url: String = "https://demo3704578.mockable.io/rest"): Call<LargeJsonResponse>
 }

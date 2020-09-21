@@ -31,6 +31,7 @@
         <activity android:name=".presentation.oc171.Oc171Activity"/>
 
         <activity android:name=".presentation.oc171.Oc171LargeDataActivity"/>
+        <activity android:name=".presentation.oc171_json_vs_rest.Oc171JsonVsRestActivity" />
     </application>
 
 </manifest>
