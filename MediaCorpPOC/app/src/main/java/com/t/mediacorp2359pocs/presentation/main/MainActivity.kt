@@ -6,6 +6,7 @@ import com.t.mediacorp2359pocs.R
 import com.t.mediacorp2359pocs.presentation.oc170.Oc170Activity
 import com.t.mediacorp2359pocs.presentation.oc171.Oc171Activity
 import com.t.mediacorp2359pocs.presentation.oc171.Oc171LargeDataActivity
+import com.t.mediacorp2359pocs.presentation.oc379.Oc379Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +28,10 @@ class MainActivity : AppCompatActivity() {
 
         btnOc171LargeData.setOnClickListener {
             startActivity(Oc171LargeDataActivity.getLaunchIntent(this))
+        }
+
+        btnOc379.setOnClickListener {
+            startActivity(Oc379Activity.getLaunchIntent(this))
         }
     }
 }

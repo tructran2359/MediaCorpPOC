@@ -5,9 +5,13 @@ import com.aperto.mediacorp.protobuf.protos.ArticleProto
 import com.aperto.mediacorp.protobuf.protos.IndexProto
 import com.t.mediacorp2359pocs.model.json.JsonResponse
 import com.t.mediacorp2359pocs.model.json.LargeJsonResponse
+import com.t.mediacorp2359pocs.model.oc379.WidgetRequest
 import okhttp3.ResponseBody
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Query
 import retrofit2.http.Url
 
 interface ApiService {
@@ -26,4 +30,11 @@ interface ApiService {
 
     @GET
     fun loadLargeProtobuff(@Url url: String = "https://www.channelnewsasia.com/blueprint/servlet/protobuf/index?extend=true"): Call<IndexProto.Index>
+
+    @POST
+    fun loadWidgets(
+        @Url url: String = "https://recommend-zoom.mediacorp.sg/api/v1/loadWidget",
+        @Query("token") token: String = "e6f6h28e26vbc8442b288eb6121d85b9a4",
+        @Body request: WidgetRequest
+    ): Call<ResponseBody>
 }
