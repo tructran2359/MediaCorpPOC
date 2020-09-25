@@ -5,13 +5,19 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.t.mediacorp2359pocs.R
 import com.t.mediacorp2359pocs.di.NetworkModule
-import com.t.mediacorp2359pocs.model.oc379.WidgetContext
-import com.t.mediacorp2359pocs.model.oc379.WidgetRequest
+import com.t.mediacorp2359pocs.mapper.toUi
+import com.t.mediacorp2359pocs.model.oc379.request.WidgetContext
+import com.t.mediacorp2359pocs.model.oc379.request.WidgetRequest
+import com.t.mediacorp2359pocs.model.oc379.response.WidgetsResponse
 import com.t.mediacorp2359pocs.presentation.oc171.ApiService
+import com.t.mediacorp2359pocs.presentation.oc171.ResponseAdapter
 import com.t.mediacorp2359pocs.utils.loadHtml
 import com.t.mediacorp2359pocs.utils.toast
 import kotlinx.android.synthetic.main.activity_oc379.btnRestApi
@@ -44,14 +50,15 @@ class Oc379Activity : AppCompatActivity() {
         const val HTML_CODE = """
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<meta name="viewport"content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 		<script async src="https://recommend-zoom.mediacorp.sg/tag.js?network=mediacorp"></script>
 		<script>
-			window.recApp =window.recApp || {};
-			recApp.context = {
-				isWebView: true,
+			window.recApp=window.recApp||{};
+			recApp.context={
+				isWebView:true,
 				site: '{{site}}',
 				lang: '{{lang}}',
 				url: '{{url}}',
@@ -62,15 +69,17 @@ class Oc379Activity : AppCompatActivity() {
 			};
 		</script>
 	</head>
+	
 	<body>
-        SUCCESS
-		<div id="{{widget_id}}" data-role="rec-widget"></div>
+		<div id="{{widget_id}}" data-role="rec-abtesting"></div>
 	</body>
-</html> 
+
+</html>
         """
     }
 
     private lateinit var mApiService: ApiService
+    private val mAdapter = WidgetAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,6 +92,7 @@ class Oc379Activity : AppCompatActivity() {
     }
 
     private fun setUpViews() {
+        setUpRecyclerView()
         setUpWebView()
         btnRestApi.setOnClickListener {
             loadApi()
@@ -90,6 +100,22 @@ class Oc379Activity : AppCompatActivity() {
 
         btnWebView.setOnClickListener {
             loadToWebView()
+        }
+    }
+
+    private fun setUpRecyclerView() {
+        mAdapter.itemClick = { widget ->
+            toast("Click: $widget")
+        }
+        rvWidgets.let { rv ->
+            rv.layoutManager = LinearLayoutManager(this)
+            rv.adapter = mAdapter
+            val dividerItemDecoration = DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
+            val drawable = ContextCompat.getDrawable(this, R.drawable.item_decoration)
+            drawable?.let {
+                dividerItemDecoration.setDrawable(it)
+            }
+            rv.addItemDecoration(dividerItemDecoration)
         }
     }
 
@@ -103,15 +129,19 @@ class Oc379Activity : AppCompatActivity() {
     }
 
     private fun loadApi() {
-        val callback = object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+        webView.isGone = true
+        rvWidgets.isVisible = true
+        val callback = object : Callback<WidgetsResponse> {
+            override fun onResponse(call: Call<WidgetsResponse>, response: Response<WidgetsResponse>) {
                 val data = response.body()
                 hideLoading()
-                toast("Success")
-                Timber.d(data?.string() ?: "Null")
+
+                data?.let { widgetsResponse ->
+                    mAdapter.submitList(widgetsResponse.data.items.toUi())
+                }
             }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            override fun onFailure(call: Call<WidgetsResponse>, t: Throwable) {
                 hideLoading()
                 Timber.e(t)
                 toast("Error")
@@ -138,7 +168,7 @@ class Oc379Activity : AppCompatActivity() {
     private fun loadToWebView() {
         webView.isVisible = true
         rvWidgets.isGone = true
-        val fullHtmlCode = HTML_CODE.replace("{{site}}", SITE)
+        val fullHtmlCode = HTML_CODE
             .replace("{{site}}", SITE)
             .replace("{{lang}}", LANG)
             .replace("{{url}}", URL)

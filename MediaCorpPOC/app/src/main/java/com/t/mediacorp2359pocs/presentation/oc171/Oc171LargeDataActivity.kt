@@ -188,7 +188,7 @@ open class Oc171LargeDataActivity : AppCompatActivity() {
 
     private fun getLogMessage(): String {
         return "Response time: $mResponseTime ms" +
-            "\nData is received: $mReceivedTime ms" +
+            "\nDataResponse is received: $mReceivedTime ms" +
             "\nView count: ${mAdapter.itemCount}" +
             "\nScreen is rendered: $mRenderedTime ms" +
             "\nTotal time: ${mRenderedTime + mReceivedTime} ms"

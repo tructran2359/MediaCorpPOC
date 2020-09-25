@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnRestApi"
+        android:layout_marginStart="@dimen/space_normal"
         android:text="WebView"
         />
 
@@ -23,6 +24,8 @@
         android:id="@+id/btnRestApi"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_normal"
+        android:layout_marginEnd="@dimen/space_normal"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnWebView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,6 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnWebView"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/space_normal"
         android:visibility="gone"
         />
 
@@ -48,6 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnWebView"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/space_normal"
         android:visibility="gone"
         />
 

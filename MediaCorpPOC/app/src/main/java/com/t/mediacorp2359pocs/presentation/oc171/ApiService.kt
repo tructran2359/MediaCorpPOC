@@ -4,7 +4,8 @@ import com.aperto.mediacorp.protobuf.protos.ArticleProto
 import com.aperto.mediacorp.protobuf.protos.IndexProto
 import com.t.mediacorp2359pocs.model.json.JsonResponse
 import com.t.mediacorp2359pocs.model.json.LargeJsonResponse
-import com.t.mediacorp2359pocs.model.oc379.WidgetRequest
+import com.t.mediacorp2359pocs.model.oc379.request.WidgetRequest
+import com.t.mediacorp2359pocs.model.oc379.response.WidgetsResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
@@ -41,5 +42,5 @@ interface ApiService {
         @Url url: String = "https://recommend-zoom.mediacorp.sg/api/v1/loadWidget",
         @Query("token") token: String = "e6f6h28e26vbc8442b288eb6121d85b9a4",
         @Body request: WidgetRequest
-    ): Call<ResponseBody>
+    ): Call<WidgetsResponse>
 }

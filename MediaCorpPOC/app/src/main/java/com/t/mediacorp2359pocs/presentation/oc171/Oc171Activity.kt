@@ -261,7 +261,7 @@ class Oc171Activity : AppCompatActivity() {
 
     private fun getLogMessage(): String {
         return "Response time: $mResponseTime ms" +
-            "\nData is received: ${mReceivedTime - mStartApi} ms" +
+            "\nDataResponse is received: ${mReceivedTime - mStartApi} ms" +
             "\nScreen is rendered: ${mRenderedTime - mReceivedTime} ms" +
             "\nTotal time: ${mRenderedTime - mStartApi} ms"
     }
