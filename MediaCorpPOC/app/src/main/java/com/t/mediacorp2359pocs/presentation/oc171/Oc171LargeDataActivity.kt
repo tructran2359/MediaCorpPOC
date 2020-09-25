@@ -25,7 +25,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import timber.log.Timber
 
-class Oc171LargeDataActivity : AppCompatActivity() {
+open class Oc171LargeDataActivity : AppCompatActivity() {
 
     companion object {
 
@@ -46,8 +46,25 @@ class Oc171LargeDataActivity : AppCompatActivity() {
     private var mStartApi = 0L
 
     private val mAdapter = ResponseAdapter()
-    private val mApiServiceJson = NetworkModule.createApiService()
+    protected val mApiServiceJson = NetworkModule.createApiService()
     private val mApiServiceProto = NetworkModule.createApiServiceProto()
+
+    protected val mJsonCallback = object : Callback<LargeJsonResponse> {
+        override fun onResponse(
+            call: Call<LargeJsonResponse>,
+            response: Response<LargeJsonResponse>
+        ) {
+            val data = response.body()
+            response.logTime()
+
+            showData(data)
+        }
+
+        override fun onFailure(call: Call<LargeJsonResponse>, t: Throwable) {
+            hideLoading()
+            showError(t)
+        }
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +75,7 @@ class Oc171LargeDataActivity : AppCompatActivity() {
 
     }
 
-    private fun setUpViews() {
+    protected open fun setUpViews() {
 
         btnJson.setOnClickListener {
             callApi(type = TYPE_JSON)
@@ -74,13 +91,17 @@ class Oc171LargeDataActivity : AppCompatActivity() {
         }
     }
 
-    private fun callApi(type: Int) {
+    protected fun callApi(type: Int) {
         resetLog()
         resetViews()
 
         mStartApi = System.currentTimeMillis()
         showLoading()
 
+        callApiByType(type)
+    }
+
+    protected open fun callApiByType(type: Int) {
         when (type) {
             TYPE_JSON -> {
                 loadLargeJsonApi()
@@ -97,25 +118,7 @@ class Oc171LargeDataActivity : AppCompatActivity() {
     }
 
     private fun loadLargeJsonApi() {
-
-        val callback = object : Callback<LargeJsonResponse> {
-            override fun onResponse(
-                call: Call<LargeJsonResponse>,
-                response: Response<LargeJsonResponse>
-            ) {
-                val data = response.body()
-                response.logTime()
-
-                showData(data)
-            }
-
-            override fun onFailure(call: Call<LargeJsonResponse>, t: Throwable) {
-                hideLoading()
-                showError(t)
-            }
-        }
-
-        mApiServiceJson.loadLargeJson().enqueue(callback)
+        mApiServiceJson.loadLargeJson().enqueue(mJsonCallback)
     }
 
     private fun showData(data: Map<String, Any>?) {
@@ -155,7 +158,7 @@ class Oc171LargeDataActivity : AppCompatActivity() {
         pbLoading.isVisible = true
     }
 
-    private fun hideLoading() {
+    protected fun hideLoading() {
         pbLoading.isGone = true
     }
 
@@ -172,6 +175,8 @@ class Oc171LargeDataActivity : AppCompatActivity() {
     }
 
     private fun resetViews() {
+        tvLog.text = ""
+        mAdapter.items = emptyList()
     }
 
     private fun Response<*>.logTime() {

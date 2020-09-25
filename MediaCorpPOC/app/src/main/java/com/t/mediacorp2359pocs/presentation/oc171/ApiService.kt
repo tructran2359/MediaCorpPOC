@@ -1,6 +1,5 @@
 package com.t.mediacorp2359pocs.presentation.oc171
 
-//import com.proto.model.ArticleOuterClass
 import com.aperto.mediacorp.protobuf.protos.ArticleProto
 import com.aperto.mediacorp.protobuf.protos.IndexProto
 import com.t.mediacorp2359pocs.model.json.JsonResponse
@@ -30,6 +29,12 @@ interface ApiService {
 
     @GET
     fun loadLargeProtobuff(@Url url: String = "https://www.channelnewsasia.com/blueprint/servlet/protobuf/index?extend=true"): Call<IndexProto.Index>
+
+    @GET
+    fun loadJson0(@Url url: String = "https://demo3704578.mockable.io/json"): Call<LargeJsonResponse>
+
+    @GET
+    fun loadRest0(@Url url: String = "https://demo3704578.mockable.io/rest"): Call<LargeJsonResponse>
 
     @POST
     fun loadWidgets(

@@ -23,7 +23,6 @@
         style="@style/mainScreenButton"
         app:layout_constraintTop_toBottomOf="@+id/btnOc170"
         app:layout_constraintBottom_toTopOf="@+id/btnOc171LargeData"
-        android:layout_marginBottom="24dp"
         android:text="OC-171"
         />
 
@@ -31,16 +30,26 @@
         android:id="@+id/btnOc171LargeData"
         style="@style/mainScreenButton"
         app:layout_constraintTop_toBottomOf="@+id/btnOc171"
-        app:layout_constraintBottom_toTopOf="@+id/btnOc379"
+        app:layout_constraintBottom_toTopOf="@+id/btnOc171JsonVsRest"
         android:text="OC-171 Large Data"
+        />
+
+    <Button
+        android:id="@+id/btnOc171JsonVsRest"
+        style="@style/mainScreenButton"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@+id/btnOc171LargeData"
+        app:layout_constraintBottom_toTopOf="@+id/btnOc379"
+        android:text="OC-171 JSON vs REST"
         />
 
     <Button
         android:id="@+id/btnOc379"
         style="@style/mainScreenButton"
-        app:layout_constraintTop_toBottomOf="@+id/btnOc171LargeData"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@+id/btnOc171JsonVsRest"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="OC-379"
+        android:text="OC-379 API vs WebView"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

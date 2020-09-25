@@ -33,6 +33,8 @@
         <activity android:name=".presentation.oc171.Oc171LargeDataActivity"/>
 
         <activity android:name=".presentation.oc379.Oc379Activity" />
+
+        <activity android:name=".presentation.oc171_json_vs_rest.Oc171JsonVsRestActivity" />
     </application>
 
 </manifest>

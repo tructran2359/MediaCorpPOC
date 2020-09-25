@@ -1,13 +1,18 @@
 package com.t.mediacorp2359pocs.presentation.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.t.mediacorp2359pocs.R
 import com.t.mediacorp2359pocs.presentation.oc170.Oc170Activity
 import com.t.mediacorp2359pocs.presentation.oc171.Oc171Activity
 import com.t.mediacorp2359pocs.presentation.oc171.Oc171LargeDataActivity
+import com.t.mediacorp2359pocs.presentation.oc171_json_vs_rest.Oc171JsonVsRestActivity
 import com.t.mediacorp2359pocs.presentation.oc379.Oc379Activity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.btnOc170
+import kotlinx.android.synthetic.main.activity_main.btnOc171
+import kotlinx.android.synthetic.main.activity_main.btnOc171JsonVsRest
+import kotlinx.android.synthetic.main.activity_main.btnOc171LargeData
+import kotlinx.android.synthetic.main.activity_main.btnOc379
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +37,10 @@ class MainActivity : AppCompatActivity() {
 
         btnOc379.setOnClickListener {
             startActivity(Oc379Activity.getLaunchIntent(this))
+        }
+
+        btnOc171JsonVsRest.setOnClickListener {
+            startActivity(Oc171JsonVsRestActivity.getLaunchIntent(this))
         }
     }
 }
