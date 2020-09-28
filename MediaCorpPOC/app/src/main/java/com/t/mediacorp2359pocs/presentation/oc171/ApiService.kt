@@ -43,4 +43,9 @@ interface ApiService {
         @Query("token") token: String = "e6f6h28e26vbc8442b288eb6121d85b9a4",
         @Body request: WidgetRequest
     ): Call<WidgetsResponse>
+
+    @GET
+    fun trackWidgetClicked(
+        @Url url: String
+    ) : Call<ResponseBody>
 }

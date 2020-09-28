@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.oc379.Oc379DetailActivity"
+    >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:background="#2200FF00"
+            >
+
+            <ImageView
+                android:id="@+id/iv_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintDimensionRatio="H,16:9"
+                tools:background="#22FF0000"
+                tools:ignore="ContentDescription"
+                />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_image"
+                android:layout_marginTop="@dimen/space_normal"
+                android:textAppearance="?attr/textAppearanceSearchResultTitle"
+                android:layout_marginStart="@dimen/space_normal"
+                android:layout_marginEnd="@dimen/space_normal"
+                tools:text="This is title"
+                />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintEnd_toEndOf="@+id/tv_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                android:textAppearance="?attr/textAppearanceCaption"
+                tools:text="2020 - Sep - 28"
+                />
+
+            <TextView
+                android:id="@+id/tv_section"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date"
+                app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintEnd_toEndOf="@+id/tv_title"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:layout_marginBottom="@dimen/space_normal"
+                tools:text="Section Label"
+                />
+
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/tv_section"
+                app:layout_constraintStart_toStartOf="@+id/tv_title"
+                app:layout_constraintEnd_toEndOf="@+id/tv_title"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:layout_marginBottom="@dimen/space_normal"
+                android:layout_marginTop="@dimen/space_normal"
+                tools:text="@string/text_placeholder"
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
+
+</FrameLayout>

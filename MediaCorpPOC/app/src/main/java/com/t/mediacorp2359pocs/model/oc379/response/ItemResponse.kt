@@ -15,7 +15,7 @@ data class ItemResponse(
     val rankingAlgorithm: String = "",
 
     @SerializedName("ranking_score")
-    val rankingScore: Int = 0,
+    val rankingScore: Float = 0F,
 
     @SerializedName("content_id")
     val contentId: String = "",

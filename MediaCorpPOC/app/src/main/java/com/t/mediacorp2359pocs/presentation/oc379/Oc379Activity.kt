@@ -16,6 +16,7 @@ import com.t.mediacorp2359pocs.mapper.toUi
 import com.t.mediacorp2359pocs.model.oc379.request.WidgetContext
 import com.t.mediacorp2359pocs.model.oc379.request.WidgetRequest
 import com.t.mediacorp2359pocs.model.oc379.response.WidgetsResponse
+import com.t.mediacorp2359pocs.model.oc379.ui.Widget
 import com.t.mediacorp2359pocs.presentation.oc171.ApiService
 import com.t.mediacorp2359pocs.presentation.oc171.ResponseAdapter
 import com.t.mediacorp2359pocs.utils.loadHtml
@@ -105,7 +106,7 @@ class Oc379Activity : AppCompatActivity() {
 
     private fun setUpRecyclerView() {
         mAdapter.itemClick = { widget ->
-            toast("Click: $widget")
+            goToDetail(widget)
         }
         rvWidgets.let { rv ->
             rv.layoutManager = LinearLayoutManager(this)
@@ -189,5 +190,10 @@ class Oc379Activity : AppCompatActivity() {
 
     private fun hideLoading() {
         pbLoading.isGone = true
+    }
+
+    private fun goToDetail(widget: Widget) {
+        val intent = Oc379DetailActivity.getLaunchIntent(this, widget)
+        startActivity(intent)
     }
 }

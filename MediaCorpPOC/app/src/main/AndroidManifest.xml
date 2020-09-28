@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.t.mediacorp2359pocs">
+    package="com.t.mediacorp2359pocs"
+    >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -17,7 +19,6 @@
         tools:targetApi="m"
         >
 
-
         <activity android:name=".presentation.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,13 +29,19 @@
 
         <activity android:name=".presentation.oc170.Oc170Activity" />
 
-        <activity android:name=".presentation.oc171.Oc171Activity"/>
+        <activity android:name=".presentation.oc171.Oc171Activity" />
 
-        <activity android:name=".presentation.oc171.Oc171LargeDataActivity"/>
+        <activity android:name=".presentation.oc171.Oc171LargeDataActivity" />
 
         <activity android:name=".presentation.oc379.Oc379Activity" />
 
+        <activity
+            android:name=".presentation.oc379.Oc379DetailActivity"
+            android:theme="@style/AppTheme.NoActionbar"
+            />
+
         <activity android:name=".presentation.oc171_json_vs_rest.Oc171JsonVsRestActivity" />
+
     </application>
 
 </manifest>

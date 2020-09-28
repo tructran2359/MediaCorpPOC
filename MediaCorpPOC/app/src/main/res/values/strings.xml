@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">MediaCorp 2359 POCs</string>
+
+    <string name="text_placeholder"><![CDATA[
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non enim praesent elementum facilisis leo vel. Turpis egestas sed tempus urna et. Pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus. Aliquam purus sit amet luctus venenatis lectus magna fringilla. Lectus sit amet est placerat in. Id diam maecenas ultricies mi. Aliquam ut porttitor leo a diam sollicitudin tempor id eu. Consequat mauris nunc congue nisi vitae suscipit tellus mauris. Adipiscing elit ut aliquam purus sit amet. Sed tempus urna et pharetra.
+\n
+\nArcu risus quis varius quam quisque id diam vel. Auctor elit sed vulputate mi sit. Fames ac turpis egestas sed tempus urna. Felis donec et odio pellentesque diam volutpat commodo sed egestas. Eget mi proin sed libero enim sed faucibus turpis in. Nisi est sit amet facilisis magna etiam tempor orci eu. Morbi quis commodo odio aenean sed adipiscing diam donec. Facilisi cras fermentum odio eu feugiat pretium. Tempor orci eu lobortis elementum nibh tellus. Sollicitudin tempor id eu nisl. Augue lacus viverra vitae congue eu consequat ac felis. Eget lorem dolor sed viverra ipsum.
+\n
+\nEu non diam phasellus vestibulum lorem sed risus ultricies. Sagittis purus sit amet volutpat consequat. Lectus nulla at volutpat diam ut venenatis. Eu feugiat pretium nibh ipsum consequat nisl vel pretium lectus. Turpis egestas integer eget aliquet nibh praesent tristique magna. Accumsan sit amet nulla facilisi morbi tempus iaculis urna id. Sed ullamcorper morbi tincidunt ornare massa eget. Sed risus ultricies tristique nulla aliquet. Sodales ut etiam sit amet nisl purus in mollis nunc. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget. Id diam vel quam elementum. Lorem sed risus ultricies tristique nulla aliquet. Nunc non blandit massa enim. Lorem dolor sed viverra ipsum nunc. Ultrices in iaculis nunc sed.
+]]></string>
 </resources>

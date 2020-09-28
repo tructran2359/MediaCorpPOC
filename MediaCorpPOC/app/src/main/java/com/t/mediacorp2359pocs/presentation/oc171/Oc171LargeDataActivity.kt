@@ -180,8 +180,8 @@ open class Oc171LargeDataActivity : AppCompatActivity() {
     }
 
     private fun Response<*>.logTime() {
-        val sentTime = raw().sentRequestAtMillis()
-        val recvTime = raw().receivedResponseAtMillis()
+        val sentTime = raw().sentRequestAtMillis
+        val recvTime = raw().receivedResponseAtMillis
         mResponseTime = recvTime - sentTime
         mReceivedTime = System.currentTimeMillis() - mStartApi
     }
