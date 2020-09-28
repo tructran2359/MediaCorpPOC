@@ -44,6 +44,10 @@
 
         <activity android:name=".presentation.oc813.Oc813Activity" />
 
+        <activity android:name=".presentation.oc813.Oc813LoginActivity" />
+
+        <activity android:name=".presentation.oc813.Oc813SignUpActivity" />
+
     </application>
 
 </manifest>

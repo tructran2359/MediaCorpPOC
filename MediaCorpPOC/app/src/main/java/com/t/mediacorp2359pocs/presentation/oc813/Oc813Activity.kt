@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.t.mediacorp2359pocs.R
 import com.t.mediacorp2359pocs.databinding.Activity813Binding
 
 class Oc813Activity : AppCompatActivity() {
@@ -22,6 +21,19 @@ class Oc813Activity : AppCompatActivity() {
 
         mBinding = Activity813Binding.inflate(layoutInflater)
         setContentView(mBinding.root)
+
+        setUpViews()
+    }
+
+    private fun setUpViews() {
+
+        mBinding.btnLogin.setOnClickListener {
+            startActivity(Oc813LoginActivity.getLaunchIntent(this))
+        }
+
+        mBinding.btnSignUp.setOnClickListener {
+            startActivity(Oc813SignUpActivity.getLaunchIntent(this))
+        }
     }
 
 }
