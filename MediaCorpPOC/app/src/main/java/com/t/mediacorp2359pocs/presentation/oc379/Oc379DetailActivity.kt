@@ -10,6 +10,7 @@ import com.t.mediacorp2359pocs.R
 import com.t.mediacorp2359pocs.databinding.ActivityOc379DetailBinding
 import com.t.mediacorp2359pocs.di.NetworkModule
 import com.t.mediacorp2359pocs.model.oc379.ui.Widget
+import com.t.mediacorp2359pocs.utils.fromServerToLocalDateTime
 import com.t.mediacorp2359pocs.utils.load
 import com.t.mediacorp2359pocs.utils.toast
 import okhttp3.ResponseBody
@@ -52,7 +53,7 @@ class Oc379DetailActivity : AppCompatActivity() {
         mBinding.run {
             ivImage.load(widget.thumbnail)
             tvTitle.text = widget.title
-            tvDate.text = widget.publishDate
+            tvDate.text = widget.publishDate.fromServerToLocalDateTime()
             tvSection.text = widget.section
             tvDesc.setText(R.string.text_placeholder)
         }

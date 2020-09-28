@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.t.mediacorp2359pocs.R
 import com.t.mediacorp2359pocs.model.oc379.ui.Widget
+import com.t.mediacorp2359pocs.utils.fromServerToLocalDateTime
 import com.t.mediacorp2359pocs.utils.inflateItemView
 import com.t.mediacorp2359pocs.utils.load
 import kotlinx.android.synthetic.main.item_widget.view.ivThumbnail
@@ -42,7 +43,7 @@ class WidgetVH(view: View) : RecyclerView.ViewHolder(view) {
         itemView.run {
             ivThumbnail.load(widget.thumbnail)
             tvTitle.text = widget.title
-            tvPublishDate.text = widget.publishDate
+            tvPublishDate.text = widget.publishDate.fromServerToLocalDateTime()
             tvSection.text = widget.section
         }
     }
