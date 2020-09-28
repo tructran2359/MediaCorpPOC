@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingStart="@dimen/space_normal"
+    android:paddingEnd="@dimen/space_normal"
     tools:context=".presentation.main.MainActivity"
     tools:ignore="MissingConstraints,HardcodedText"
     >
