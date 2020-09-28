@@ -42,6 +42,8 @@
 
         <activity android:name=".presentation.oc171_json_vs_rest.Oc171JsonVsRestActivity" />
 
+        <activity android:name=".presentation.oc813.Oc813Activity" />
+
     </application>
 
 </manifest>

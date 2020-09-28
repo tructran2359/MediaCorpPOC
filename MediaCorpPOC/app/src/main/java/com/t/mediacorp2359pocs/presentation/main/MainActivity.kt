@@ -8,11 +8,13 @@ import com.t.mediacorp2359pocs.presentation.oc171.Oc171Activity
 import com.t.mediacorp2359pocs.presentation.oc171.Oc171LargeDataActivity
 import com.t.mediacorp2359pocs.presentation.oc171_json_vs_rest.Oc171JsonVsRestActivity
 import com.t.mediacorp2359pocs.presentation.oc379.Oc379Activity
+import com.t.mediacorp2359pocs.presentation.oc813.Oc813Activity
 import kotlinx.android.synthetic.main.activity_main.btnOc170
 import kotlinx.android.synthetic.main.activity_main.btnOc171
 import kotlinx.android.synthetic.main.activity_main.btnOc171JsonVsRest
 import kotlinx.android.synthetic.main.activity_main.btnOc171LargeData
 import kotlinx.android.synthetic.main.activity_main.btnOc379
+import kotlinx.android.synthetic.main.activity_main.btnOc813
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +43,10 @@ class MainActivity : AppCompatActivity() {
 
         btnOc171JsonVsRest.setOnClickListener {
             startActivity(Oc171JsonVsRestActivity.getLaunchIntent(this))
+        }
+
+        btnOc813.setOnClickListener {
+            startActivity(Oc813Activity.getLaunchIntent(this))
         }
     }
 }
