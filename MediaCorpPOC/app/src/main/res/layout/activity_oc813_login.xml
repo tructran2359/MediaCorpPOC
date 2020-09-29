@@ -6,56 +6,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/space_normal"
-    tools:ignore="HardcodedText"
+    tools:ignore="HardcodedText,MissingConstraints"
     >
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_username"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/ll_input_fields"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:hint="Username"
+        android:orientation="vertical"
         >
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_username"
+            style="@style/tilInputField"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="0dp"
+            android:hint="Username"
+            >
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_username"
+                style="@style/etInputField"
+                android:inputType="textEmailAddress"
+                />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_username"
-        android:hint="Password"
-        android:layout_marginTop="@dimen/space_normal"
-        >
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password"
+            style="@style/tilInputField"
+            app:layout_constraintTop_toBottomOf="@+id/til_username"
+            android:hint="Password"
+            >
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
+                style="@style/etInputField"
+                android:inputType="textPassword"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/btn_login"
-        app:layout_constraintTop_toBottomOf="@+id/til_password"
+        app:layout_constraintTop_toBottomOf="@+id/ll_input_fields"
         style="@style/mainScreenButton"
         android:text="Login"
         android:layout_marginTop="@dimen/space_normal"
         app:layout_constraintWidth_percent="0.5"
         tools:ignore="MissingConstraints"
+        />
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

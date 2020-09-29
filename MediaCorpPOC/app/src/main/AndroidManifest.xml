@@ -77,6 +77,8 @@
 
         <activity android:name=".presentation.oc813.Oc813SignUpActivity" />
 
+        <activity android:name=".presentation.oc813.Oc813MyProfileActivity" />
+
     </application>
 
 </manifest>

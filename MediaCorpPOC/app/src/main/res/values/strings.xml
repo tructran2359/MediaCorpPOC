@@ -8,6 +8,7 @@
     <string name="facebook_app_id">674673249824284</string>
     <string name="fb_login_protocol_scheme">fb674673249824284</string>
     <bool name="mc_sso_production">false</bool>
+    <string name="google_server_client_id"></string>
 
     <!--#######################################################################-->
     <!--App Strings-->
