@@ -1,6 +1,18 @@
 <resources>
     <string name="app_name">MediaCorp 2359 POCs</string>
 
+    <!--#######################################################################-->
+    <!--MediaCorp setup-->
+    <!--#######################################################################-->
+
+    <string name="facebook_app_id">674673249824284</string>
+    <string name="fb_login_protocol_scheme">fb674673249824284</string>
+    <bool name="mc_sso_production">false</bool>
+
+    <!--#######################################################################-->
+    <!--App Strings-->
+    <!--#######################################################################-->
+
     <string name="text_placeholder"><![CDATA[
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Non enim praesent elementum facilisis leo vel. Turpis egestas sed tempus urna et. Pulvinar neque laoreet suspendisse interdum consectetur libero id faucibus. Aliquam purus sit amet luctus venenatis lectus magna fringilla. Lectus sit amet est placerat in. Id diam maecenas ultricies mi. Aliquam ut porttitor leo a diam sollicitudin tempor id eu. Consequat mauris nunc congue nisi vitae suscipit tellus mauris. Adipiscing elit ut aliquam purus sit amet. Sed tempus urna et pharetra.
 \n
