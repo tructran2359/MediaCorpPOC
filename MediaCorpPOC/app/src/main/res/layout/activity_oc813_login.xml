@@ -34,7 +34,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_password"
-            style="@style/tilInputField"
+            style="@style/tilInputField.password"
             app:layout_constraintTop_toBottomOf="@+id/til_username"
             android:hint="Password"
             >

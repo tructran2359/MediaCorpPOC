@@ -67,7 +67,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_password"
-                style="@style/tilInputField"
+                style="@style/tilInputField.password"
                 android:hint="Password"
                 >
 
@@ -81,7 +81,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_confirm_password"
-                style="@style/tilInputField"
+                style="@style/tilInputField.password"
                 android:hint="Confirm password"
                 >
 

@@ -58,6 +58,10 @@
         <item name="android:layout_marginTop">@dimen/space_normal</item>
     </style>
 
+    <style name="tilInputField.password">
+        <item name="passwordToggleEnabled">true</item>
+    </style>
+
     <style name="etInputField">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
