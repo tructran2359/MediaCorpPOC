@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnRest"
+        android:layout_marginStart="@dimen/space_x1"
         android:text="JSON"
         />
 
@@ -26,6 +27,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnJson"
         app:layout_constraintEnd_toStartOf="@+id/btnProto"
+        android:layout_marginStart="@dimen/space_x1"
         android:text="REST"
         />
 
@@ -36,6 +38,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnRest"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/space_x1"
+        android:layout_marginEnd="@dimen/space_x1"
         android:text="PROTOBUFF"
         />
 

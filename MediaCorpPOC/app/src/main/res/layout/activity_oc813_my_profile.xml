@@ -57,7 +57,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceCaption"
-        android:text="`Sign out` will be called automatically when this screen finishes"
+        android:text="`Sign out` will be called automatically when this screen finished"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
