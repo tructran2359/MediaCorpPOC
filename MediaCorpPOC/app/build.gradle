@@ -27,8 +27,8 @@ android {
         applicationId "com.t.mediacorp2359pocs"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 7
-        versionName "0.0.7"
+        versionCode 8
+        versionName "0.0.8"
 
         signingConfig signingConfigs.staging
 
