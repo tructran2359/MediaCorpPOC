@@ -34,9 +34,9 @@ class Oc170Activity : AppCompatActivity() {
 <div class="usvotes-subheader"><b>ELECTION</b><em>results</em> </div>
 
 <script src="https://elections.ap.org/widgets/js/resizer.client.min.js" type="text/javascript"></script>
-<iframe class="emap" id="iframe_04ca8c27f34b31073fdb37cbd5b0e2b6" src="https://interactives.ap.org/elections-2020/?date=2116-11-08&site=7b650de4-559e-40fd-865a-b729e5e84453" width="100%"   frameborder="1" allowfullscreen="allowfullscreen" ></iframe>
+<iframe class="emap" id="iframe_04ca8c27f34b31073fdb37cbd5b0e2b6" src="https://interactives.ap.org/elections-2020/?date=2116-11-08&site=7b650de4-559e-40fd-865a-b729e5e84453" width="100%" height="500" frameborder="1" allowfullscreen="allowfullscreen" ></iframe>
 
-<iframe src="https://interactives.ap.org/2020-candidates/" id="ap-embed-candidates" class="candidates" width="100%" >
+<iframe src="https://interactives.ap.org/2020-candidates/" id="ap-embed-candidates" class="candidates" width="100%" height="500" >
 <!-- The following message will be displayed to users with unsupported browsers: -->
 Your browser does not support the <code>iframe</code> HTML tag.
 Try viewing this in a modern browser like Chrome, Safari, Firefox or Internet Explorer 9 or later.
