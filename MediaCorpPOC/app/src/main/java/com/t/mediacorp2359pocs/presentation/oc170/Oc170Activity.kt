@@ -31,12 +31,13 @@ class Oc170Activity : AppCompatActivity() {
         private const val SAMPLE_REST_EXPORT_VIEWS_2 = """<iframe src="https://infographics.channelnewsasia.com/covid-19/map.html" height="200" width="300" title="Iframe Example"></iframe>"""
 
         private const val US_ELECTION_WIDGET = """
-<div class="usvotes-subheader"><b>ELECTION</b><em>results</em> </div>
+<iframe src="https://interactives.ap.org/2020-candidates/" id="ap-embed-candidates" width="100%" height="800px" style="border: 1px solid #eee;">
+<!-- The following message will be displayed to users with unsupported browsers: -->
+Your browser does not support the <code>iframe</code> HTML tag.
+Try viewing this in a modern browser like Chrome, Safari, Firefox or Internet Explorer 9 or later.
+</iframe>
 
-<script src="https://elections.ap.org/widgets/js/resizer.client.min.js" type="text/javascript"></script>
-<iframe class="emap" id="iframe_04ca8c27f34b31073fdb37cbd5b0e2b6" src="https://interactives.ap.org/elections-2020/?date=2116-11-08&site=7b650de4-559e-40fd-865a-b729e5e84453" width="100%" height="500" frameborder="1" allowfullscreen="allowfullscreen" ></iframe>
-
-<iframe src="https://interactives.ap.org/2020-candidates/" id="ap-embed-candidates" class="candidates" width="100%" height="500" >
+<iframe src="https://interactives.ap.org/delegate-tracker/" id="ap-embed-delegates" width="100%" height="800px" style="border: 1px solid #eee;">
 <!-- The following message will be displayed to users with unsupported browsers: -->
 Your browser does not support the <code>iframe</code> HTML tag.
 Try viewing this in a modern browser like Chrome, Safari, Firefox or Internet Explorer 9 or later.
