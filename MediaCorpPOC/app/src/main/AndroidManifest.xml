@@ -79,6 +79,8 @@
 
         <activity android:name=".presentation.oc813.Oc813MyProfileActivity" />
 
+        <activity android:name=".presentation.oc1473_algolia.Oc1473Activity" />
+
     </application>
 
 </manifest>

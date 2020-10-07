@@ -3,12 +3,14 @@ package com.t.mediacorp2359pocs.presentation.main
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.t.mediacorp2359pocs.R
+import com.t.mediacorp2359pocs.presentation.oc1473_algolia.Oc1473Activity
 import com.t.mediacorp2359pocs.presentation.oc170.Oc170Activity
 import com.t.mediacorp2359pocs.presentation.oc171.Oc171Activity
 import com.t.mediacorp2359pocs.presentation.oc171.Oc171LargeDataActivity
 import com.t.mediacorp2359pocs.presentation.oc171_json_vs_rest.Oc171JsonVsRestActivity
 import com.t.mediacorp2359pocs.presentation.oc379.Oc379Activity
 import com.t.mediacorp2359pocs.presentation.oc813.Oc813Activity
+import kotlinx.android.synthetic.main.activity_main.btnOc1473
 import kotlinx.android.synthetic.main.activity_main.btnOc170
 import kotlinx.android.synthetic.main.activity_main.btnOc171
 import kotlinx.android.synthetic.main.activity_main.btnOc171JsonVsRest
@@ -47,6 +49,10 @@ class MainActivity : AppCompatActivity() {
 
         btnOc813.setOnClickListener {
             startActivity(Oc813Activity.getLaunchIntent(this))
+        }
+
+        btnOc1473.setOnClickListener {
+            startActivity(Oc1473Activity.getLaunchIntent(this))
         }
     }
 }
