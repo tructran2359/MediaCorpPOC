@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,56 +11,64 @@
     tools:ignore="MissingConstraints,HardcodedText"
     >
 
-    <Button
-        android:id="@+id/btnOc170"
-        style="@style/mainScreenButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/btnOc171"
-        app:layout_constraintVertical_chainStyle="packed"
-        android:text="OC-170"
-        />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
 
-    <Button
-        android:id="@+id/btnOc171"
-        style="@style/mainScreenButton"
-        app:layout_constraintTop_toBottomOf="@+id/btnOc170"
-        app:layout_constraintBottom_toTopOf="@+id/btnOc171LargeData"
-        android:text="OC-171"
-        />
+        <Button
+            android:id="@+id/btnOc170"
+            style="@style/mainScreenButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnOc171"
+            app:layout_constraintVertical_chainStyle="packed"
+            android:layout_marginTop="@dimen/space_medium"
+            android:text="OC-170"
+            />
 
-    <Button
-        android:id="@+id/btnOc171LargeData"
-        style="@style/mainScreenButton"
-        app:layout_constraintTop_toBottomOf="@+id/btnOc171"
-        app:layout_constraintBottom_toTopOf="@+id/btnOc171JsonVsRest"
-        android:text="OC-171 Large Data"
-        />
+        <Button
+            android:id="@+id/btnOc171"
+            style="@style/mainScreenButton"
+            app:layout_constraintTop_toBottomOf="@+id/btnOc170"
+            app:layout_constraintBottom_toTopOf="@+id/btnOc171LargeData"
+            android:text="OC-171"
+            />
 
-    <Button
-        android:id="@+id/btnOc171JsonVsRest"
-        style="@style/mainScreenButton"
-        android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@+id/btnOc171LargeData"
-        app:layout_constraintBottom_toTopOf="@+id/btnOc379"
-        android:text="OC-171 JSON vs REST"
-        />
+        <Button
+            android:id="@+id/btnOc171LargeData"
+            style="@style/mainScreenButton"
+            app:layout_constraintTop_toBottomOf="@+id/btnOc171"
+            app:layout_constraintBottom_toTopOf="@+id/btnOc171JsonVsRest"
+            android:text="OC-171 Large Data"
+            />
 
-    <Button
-        android:id="@+id/btnOc379"
-        style="@style/mainScreenButton"
-        android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@+id/btnOc171JsonVsRest"
-        app:layout_constraintBottom_toTopOf="@id/btnOc813"
-        android:text="OC-379 API vs WebView"
-        />
+        <Button
+            android:id="@+id/btnOc171JsonVsRest"
+            style="@style/mainScreenButton"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@+id/btnOc171LargeData"
+            app:layout_constraintBottom_toTopOf="@+id/btnOc379"
+            android:text="OC-171 JSON vs REST"
+            />
 
-    <Button
-        android:id="@+id/btnOc813"
-        style="@style/mainScreenButton"
-        android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@+id/btnOc379"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="OC-813 SSO SDK"
-        />
+        <Button
+            android:id="@+id/btnOc379"
+            style="@style/mainScreenButton"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@+id/btnOc171JsonVsRest"
+            app:layout_constraintBottom_toTopOf="@id/btnOc813"
+            android:text="OC-379 API vs WebView"
+            />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnOc813"
+            style="@style/mainScreenButton"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@+id/btnOc379"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="OC-813 SSO SDK"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
