@@ -5,4 +5,5 @@
     <color name="colorAccent">#03DAC5</color>
 
     <color name="card_background">@android:color/white</color>
+    <color name="highlight">#5500FF00</color>
 </resources>

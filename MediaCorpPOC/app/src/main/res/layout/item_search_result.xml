@@ -20,6 +20,13 @@
         >
 
         <TextView
+            android:id="@+id/tv_id"
+            style="@style/tvContent"
+            android:textAppearance="?attr/textAppearanceCaption"
+            tools:text="ID"
+            />
+
+        <TextView
             android:id="@+id/tv_title"
             style="@style/tvContent"
             android:textAppearance="?attr/textAppearanceSearchResultTitle"
@@ -44,7 +51,6 @@
             android:id="@+id/tv_desc"
             style="@style/tvContent"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:maxLines="2"
             android:ellipsize="end"
             tools:text="Descriptions"
             />

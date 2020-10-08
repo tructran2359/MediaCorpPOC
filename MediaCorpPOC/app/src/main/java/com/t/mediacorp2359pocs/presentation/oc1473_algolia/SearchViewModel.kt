@@ -16,6 +16,7 @@ import com.algolia.search.model.IndexName
 import com.algolia.search.model.response.ResponseSearch
 import com.google.gson.GsonBuilder
 import com.t.mediacorp2359pocs.mapper.toSearchResult
+import kotlinx.serialization.json.jsonObject
 import timber.log.Timber
 
 class SearchViewModel : ViewModel() {
@@ -66,9 +67,12 @@ class SearchViewModel : ViewModel() {
         val dataSourceFactory: SearcherSingleIndexDataSource.Factory<SearchResult> = SearcherSingleIndexDataSource.Factory(searcher = mSearcher) { hit ->
             try {
                 val jsonString = hit.json.toString()
+                val highlights = hit.json["_highlightResult"]?.jsonObject
+                Timber.d("Parse snippet: ${hit.json}")
 
-
-                val response = mGson.fromJson(jsonString, SearchResultResponse::class.java)
+                val response = mGson.fromJson(jsonString, SearchResultResponse::class.java).apply {
+                    this.highlightResult = highlights
+                }
 
                 response.toSearchResult()
             } catch (e: Exception) {

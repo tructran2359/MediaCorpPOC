@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import androidx.annotation.ColorRes
+import androidx.core.content.ContextCompat
 import timber.log.Timber
 
 fun Context.toast(msg: String) {
@@ -21,3 +23,5 @@ fun Context.openExternalBrowser(url: String) {
         toast("Can not open url : \"$url\"")
     }
 }
+
+fun Context.getColorCompat(@ColorRes colorRes: Int): Int = ContextCompat.getColor(this, colorRes)

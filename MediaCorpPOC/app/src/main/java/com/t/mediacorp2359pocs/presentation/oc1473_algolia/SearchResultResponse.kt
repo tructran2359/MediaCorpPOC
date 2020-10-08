@@ -7,6 +7,7 @@ import com.google.gson.JsonElement
 import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
+import kotlinx.serialization.json.JsonObject
 
 data class SearchResultResponse(
 
@@ -24,7 +25,13 @@ data class SearchResultResponse(
 
     @SerializedName("objectID")
     val objectID: String = ""
-)
+) {
+    var highlightResult: JsonObject? = null
+}
+
+///////////////////////////////////////////////////////////////////////////
+// Custom Deserializer
+///////////////////////////////////////////////////////////////////////////
 
 data class StringList(
     var values: List<String> = emptyList()

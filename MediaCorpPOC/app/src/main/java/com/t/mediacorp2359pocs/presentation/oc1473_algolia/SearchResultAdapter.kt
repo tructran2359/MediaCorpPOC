@@ -40,10 +40,11 @@ class SearchResultVH(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(result: SearchResult) {
         mBinding.run {
-            tvTitle.textOrHide = result.title
-            tvCategory.textOrHide = result.categories.joinToString()
-            tvTopics.textOrHide = result.topics.joinToString()
-            tvDesc.textOrHide = result.paragraphText.joinToStringWithLineBreak()
+            tvId.text = result.objectID
+            tvTitle.textOrHide = result.highlightedTitle
+            tvCategory.textOrHide = result.highlightedCategories
+            tvTopics.textOrHide = result.highlightedTopics
+            tvDesc.textOrHide = result.highlightedParagraphText
         }
     }
 }

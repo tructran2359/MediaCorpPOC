@@ -12,7 +12,7 @@ fun TextView.textAsString(): String {
     return text?.toString() ?: ""
 }
 
-var TextView.textOrHide: String?
+var TextView.textOrHide: CharSequence?
     get() = textAsString()
     set(value) {
         text = value

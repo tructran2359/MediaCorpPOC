@@ -9,5 +9,7 @@ fun SearchResultResponse.toSearchResult(): SearchResult {
         paragraphText = paragraphText.values,
         title = title,
         topics = topics.values,
-        objectID = objectID)
+        objectID = objectID,
+        highlightResult = highlightResult
+    )
 }
