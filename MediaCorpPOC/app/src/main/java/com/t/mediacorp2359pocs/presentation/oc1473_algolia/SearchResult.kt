@@ -1,7 +1,7 @@
 package com.t.mediacorp2359pocs.presentation.oc1473_algolia
 
 data class SearchResult(
-    val categories: String,
+    val categories: List<String>,
 
     val paragraphText: List<String>,
 
@@ -14,10 +14,10 @@ data class SearchResult(
     companion object {
         const val INVALID_ID = "INVALID_ID"
         fun invalidObject(): SearchResult = SearchResult(
-            categories = "",
-            paragraphText = listOf(),
+            categories = emptyList(),
+            paragraphText = emptyList(),
             title = "",
-            topics = listOf(),
+            topics = emptyList(),
             objectID = INVALID_ID
         )
     }

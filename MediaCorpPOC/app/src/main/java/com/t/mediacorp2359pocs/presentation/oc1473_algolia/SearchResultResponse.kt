@@ -11,7 +11,7 @@ import java.lang.reflect.Type
 data class SearchResultResponse(
 
     @SerializedName("categories")
-    val categories: String = "",
+    val categories: StringList = StringList(),
 
     @SerializedName("paragraph_text")
     val paragraphText: StringList = StringList(),

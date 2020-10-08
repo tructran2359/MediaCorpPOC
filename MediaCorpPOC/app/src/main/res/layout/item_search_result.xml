@@ -1,23 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/space_x1"
+    app:cardBackgroundColor="@color/card_background"
+    android:layout_marginTop="@dimen/space_x1"
+    android:layout_marginBottom="@dimen/space_x1"
+    android:layout_marginStart="@dimen/space_x2"
+    android:layout_marginEnd="@dimen/space_x2"
     >
 
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:textAppearance="?attr/textAppearanceListItem"
-        tools:text="Search result name"
-        />
+        android:orientation="vertical"
+        android:padding="@dimen/space_x2"
+        >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/tvContent"
+            android:textAppearance="?attr/textAppearanceSearchResultTitle"
+            tools:text="Title"
+            />
+
+        <TextView
+            android:id="@+id/tv_category"
+            style="@style/tvContent"
+            android:textAppearance="?attr/textAppearanceListItemSmall"
+            tools:text="Category"
+            />
+
+        <TextView
+            android:id="@+id/tv_topics"
+            style="@style/tvContent"
+            android:textAppearance="?attr/textAppearanceListItemSecondary"
+            tools:text="Topics"
+            />
+
+        <TextView
+            android:id="@+id/tv_desc"
+            style="@style/tvContent"
+            android:textAppearance="?attr/textAppearanceListItem"
+            android:maxLines="2"
+            android:ellipsize="end"
+            tools:text="Descriptions"
+            />
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.t.mediacorp2359pocs.R
 import com.t.mediacorp2359pocs.databinding.ItemSearchResultBinding
 import com.t.mediacorp2359pocs.utils.inflateItemView
+import com.t.mediacorp2359pocs.utils.joinToStringWithLineBreak
+import com.t.mediacorp2359pocs.utils.textOrHide
 
 class SearchResultAdapter : PagedListAdapter<SearchResult, SearchResultVH>(SearchResultDiffUtils()) {
 
@@ -37,7 +39,12 @@ class SearchResultVH(view: View) : RecyclerView.ViewHolder(view) {
     private val mBinding = ItemSearchResultBinding.bind(view)
 
     fun bind(result: SearchResult) {
-        mBinding.tvName.text = result.title
+        mBinding.run {
+            tvTitle.textOrHide = result.title
+            tvCategory.textOrHide = result.categories.joinToString()
+            tvTopics.textOrHide = result.topics.joinToString()
+            tvDesc.textOrHide = result.paragraphText.joinToStringWithLineBreak()
+        }
     }
 }
 

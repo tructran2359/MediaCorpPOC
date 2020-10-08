@@ -2,13 +2,13 @@ package com.t.mediacorp2359pocs.presentation.oc1473_algolia
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.algolia.instantsearch.core.connection.ConnectionHandler
 import com.algolia.instantsearch.helper.android.list.SearcherSingleIndexDataSource
 import com.algolia.instantsearch.helper.android.searchbox.SearchBoxConnectorPagedList
 import com.algolia.instantsearch.helper.searcher.SearcherSingleIndex
+import com.algolia.instantsearch.helper.stats.StatsConnector
 import com.algolia.search.client.ClientSearch
 import com.algolia.search.model.APIKey
 import com.algolia.search.model.ApplicationID
@@ -60,6 +60,8 @@ class SearchViewModel : ViewModel() {
     val searchBox: SearchBoxConnectorPagedList<ResponseSearch>
     private val connectionHandler = ConnectionHandler()
 
+    val stats = StatsConnector(mSearcher)
+
     init {
         val dataSourceFactory: SearcherSingleIndexDataSource.Factory<SearchResult> = SearcherSingleIndexDataSource.Factory(searcher = mSearcher) { hit ->
             try {
@@ -79,6 +81,7 @@ class SearchViewModel : ViewModel() {
 
         searchBox = SearchBoxConnectorPagedList(mSearcher, listOf(liveSearchResults))
         connectionHandler += searchBox
+        connectionHandler += stats
     }
 
     override fun onCleared() {

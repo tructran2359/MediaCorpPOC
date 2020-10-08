@@ -10,6 +10,9 @@ import com.algolia.instantsearch.core.connection.ConnectionHandler
 import com.algolia.instantsearch.helper.android.list.autoScrollToStart
 import com.algolia.instantsearch.helper.android.searchbox.SearchBoxViewEditText
 import com.algolia.instantsearch.helper.android.searchbox.connectView
+import com.algolia.instantsearch.helper.android.stats.StatsTextView
+import com.algolia.instantsearch.helper.stats.StatsPresenterImpl
+import com.algolia.instantsearch.helper.stats.connectView
 import com.t.mediacorp2359pocs.databinding.ActivityOc1473Binding
 import timber.log.Timber
 
@@ -56,9 +59,14 @@ class Oc1473Activity : AppCompatActivity() {
     }
 
     private fun setUpViews() {
-        val seachBoxView = SearchBoxViewEditText(mBinding.etKeyword)
 
-        mConnectionHandler += mViewModel.searchBox.connectView(seachBoxView)
+        // Search Box
+        val searchBoxView = SearchBoxViewEditText(mBinding.etKeyword)
+        mConnectionHandler += mViewModel.searchBox.connectView(searchBoxView)
+
+        // Stat view
+        val statsView = StatsTextView(mBinding.tvStats)
+        mConnectionHandler += mViewModel.stats.connectView(statsView, StatsPresenterImpl())
 
         mBinding.rvResults.let { rv ->
             rv.layoutManager = LinearLayoutManager(this)
