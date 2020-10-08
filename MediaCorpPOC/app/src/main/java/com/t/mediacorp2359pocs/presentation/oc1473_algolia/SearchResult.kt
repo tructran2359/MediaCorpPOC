@@ -6,7 +6,6 @@ import com.algolia.instantsearch.core.highlighting.HighlightTokenizer
 import com.algolia.instantsearch.core.highlighting.HighlightedString
 import com.algolia.instantsearch.helper.android.highlighting.toSpannedString
 import com.algolia.search.model.search.HighlightResult
-import com.algolia.search.model.search.SnippetResult
 import com.t.mediacorp2359pocs.MyApplication
 import com.t.mediacorp2359pocs.R
 import com.t.mediacorp2359pocs.utils.getColorCompat
@@ -14,9 +13,10 @@ import com.t.mediacorp2359pocs.utils.joinToStringWithLineBreak
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
-import timber.log.Timber
 
 data class SearchResult(
+    val brief: String,
+
     val categories: List<String>,
 
     val paragraphText: List<String>,
@@ -32,6 +32,7 @@ data class SearchResult(
     companion object {
         const val INVALID_ID = "INVALID_ID"
         fun invalidObject(): SearchResult = SearchResult(
+            brief = "",
             categories = emptyList(),
             paragraphText = emptyList(),
             title = "",
@@ -40,6 +41,9 @@ data class SearchResult(
             highlightResult = null
         )
     }
+
+    val highlightedBrief: CharSequence
+        get() = getHighlights("brief") ?: brief
 
     val highlightedTitle: CharSequence
         get() = getHighlights("title") ?: title
@@ -63,11 +67,9 @@ data class SearchResult(
     private fun getHighlights(key: String): SpannedString? {
         val list = mutableListOf<HighlightResult>()
 
-        Timber.d("Snippet: $highlightResult")
         highlightResult?.let { result ->
             val element = result[key]
 
-            Timber.d("Element: $element")
 
             when (element) {
                 is JsonObject -> {
@@ -92,8 +94,6 @@ data class SearchResult(
         if (list.isEmpty()) {
             return null
         }
-
-        Timber.d(list.map { it.value }.joinToStringWithLineBreak())
 
         val joinedList = list.map { it.value }
             .joinToString()

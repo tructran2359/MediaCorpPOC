@@ -1,5 +1,6 @@
 package com.t.mediacorp2359pocs.presentation.oc1473_algolia
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
@@ -38,13 +39,15 @@ class SearchResultVH(view: View) : RecyclerView.ViewHolder(view) {
 
     private val mBinding = ItemSearchResultBinding.bind(view)
 
+    @SuppressLint("SetTextI18n")
     fun bind(result: SearchResult) {
         mBinding.run {
             tvId.text = result.objectID
-            tvTitle.textOrHide = result.highlightedTitle
-            tvCategory.textOrHide = result.highlightedCategories
-            tvTopics.textOrHide = result.highlightedTopics
-            tvDesc.textOrHide = result.highlightedParagraphText
+            tvBrief.text = result.highlightedBrief
+            tvTitle.text = result.highlightedTitle
+            tvCategory.text = result.highlightedCategories
+            tvTopics.text = result.highlightedTopics
+            tvDesc.text = result.highlightedParagraphText
         }
     }
 }

@@ -5,6 +5,7 @@ import com.t.mediacorp2359pocs.presentation.oc1473_algolia.SearchResultResponse
 
 fun SearchResultResponse.toSearchResult(): SearchResult {
     return SearchResult(
+        brief = brief,
         categories = categories.values,
         paragraphText = paragraphText.values,
         title = title,

@@ -11,6 +11,9 @@ import kotlinx.serialization.json.JsonObject
 
 data class SearchResultResponse(
 
+    @SerializedName("brief")
+    val brief: String = "",
+
     @SerializedName("categories")
     val categories: StringList = StringList(),
 

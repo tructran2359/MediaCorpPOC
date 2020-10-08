@@ -5,11 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/space_normal"
+    android:layout_marginEnd="@dimen/space_normal"
+    android:layout_marginTop="@dimen/space_x2"
+    android:layout_marginBottom="@dimen/space_x2"
     app:cardBackgroundColor="@color/card_background"
-    android:layout_marginTop="@dimen/space_x1"
-    android:layout_marginBottom="@dimen/space_x1"
-    android:layout_marginStart="@dimen/space_x2"
-    android:layout_marginEnd="@dimen/space_x2"
+    tools:ignore="HardcodedText"
     >
 
     <LinearLayout
@@ -19,41 +20,130 @@
         android:padding="@dimen/space_x2"
         >
 
-        <TextView
-            android:id="@+id/tv_id"
-            style="@style/tvContent"
-            android:textAppearance="?attr/textAppearanceCaption"
-            tools:text="ID"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID: "
+                android:textAppearance="?attr/textAppearanceBody1"
+                />
+
+            <TextView
+                android:id="@+id/tv_id"
+                style="@style/tvContent"
+                android:textAppearance="?attr/textAppearanceCaption"
+                tools:text="ID"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title: "
+                android:textAppearance="?attr/textAppearanceBody1"
+                />
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/tvContent"
+                android:textAppearance="?attr/textAppearanceSearchResultTitle"
+                tools:text="Title"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Brief: "
+                android:textAppearance="?attr/textAppearanceBody1"
+                />
+
+            <TextView
+                android:id="@+id/tv_brief"
+                style="@style/tvContent"
+                android:textAppearance="?attr/textAppearanceListItemSmall"
+                tools:text="Brief"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categories: "
+                android:textAppearance="?attr/textAppearanceBody1"
+                />
+
+            <TextView
+                android:id="@+id/tv_category"
+                style="@style/tvContent"
+                android:textAppearance="?attr/textAppearanceListItemSmall"
+                tools:text="Categories"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Topics: "
+                android:textAppearance="?attr/textAppearanceBody1"
+                />
+
+            <TextView
+                android:id="@+id/tv_topics"
+                style="@style/tvContent"
+                android:textAppearance="?attr/textAppearanceListItemSecondary"
+                tools:text="Topics"
+                />
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_title"
-            style="@style/tvContent"
-            android:textAppearance="?attr/textAppearanceSearchResultTitle"
-            tools:text="Title"
-            />
-
-        <TextView
-            android:id="@+id/tv_category"
-            style="@style/tvContent"
-            android:textAppearance="?attr/textAppearanceListItemSmall"
-            tools:text="Category"
-            />
-
-        <TextView
-            android:id="@+id/tv_topics"
-            style="@style/tvContent"
-            android:textAppearance="?attr/textAppearanceListItemSecondary"
-            tools:text="Topics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Descriptions: "
+            android:textAppearance="?attr/textAppearanceBody1"
             />
 
         <TextView
             android:id="@+id/tv_desc"
             style="@style/tvContent"
-            android:textAppearance="?attr/textAppearanceListItem"
             android:ellipsize="end"
+            android:textAppearance="?attr/textAppearanceListItem"
             tools:text="Descriptions"
             />
+
 
     </LinearLayout>
 

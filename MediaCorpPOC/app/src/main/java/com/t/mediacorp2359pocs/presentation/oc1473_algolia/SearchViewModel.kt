@@ -68,7 +68,6 @@ class SearchViewModel : ViewModel() {
             try {
                 val jsonString = hit.json.toString()
                 val highlights = hit.json["_highlightResult"]?.jsonObject
-                Timber.d("Parse snippet: ${hit.json}")
 
                 val response = mGson.fromJson(jsonString, SearchResultResponse::class.java).apply {
                     this.highlightResult = highlights
