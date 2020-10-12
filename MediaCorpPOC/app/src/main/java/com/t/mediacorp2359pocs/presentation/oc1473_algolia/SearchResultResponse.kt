@@ -49,7 +49,7 @@ class StringListDeserializer : JsonDeserializer<StringList> {
 
         val stringList = StringList()
 
-        if (json?.isJsonArray() == true) {
+        if (json?.isJsonArray == true) {
             stringList.values = context?.deserialize(json, object : TypeToken<List<String>>(){}.type) ?: emptyList()
         } else {
             stringList.values = if (json != null) {
