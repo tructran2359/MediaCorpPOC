@@ -81,6 +81,8 @@
 
         <activity android:name=".presentation.oc1473_algolia.Oc1473Activity" />
 
+        <activity android:name=".presentation.oc2097_liveblog.Oc2079LiveBlogActivity" />
+
     </application>
 
 </manifest>

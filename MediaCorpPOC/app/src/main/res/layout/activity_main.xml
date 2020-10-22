@@ -74,8 +74,17 @@
             style="@style/mainScreenButton"
             android:textAllCaps="false"
             app:layout_constraintTop_toBottomOf="@+id/btnOc813"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnOc2097"
             android:text="OC-1473 Algolia SDK"
+            />
+
+        <Button
+            android:id="@+id/btnOc2097"
+            style="@style/mainScreenButton"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@+id/btnOc1473"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="OC-2071 LiveBlog SDK"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
