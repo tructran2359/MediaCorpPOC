@@ -10,6 +10,7 @@ import com.t.mediacorp2359pocs.databinding.ActivityOc2097LiveblogBinding
 class Oc2079LiveBlogActivity : AppCompatActivity() {
 
     companion object {
+        const val EVENT_ID = "2636807179789895648"
         fun getLaunchIntent(context: Context): Intent {
             return Intent(context, Oc2079LiveBlogActivity::class.java)
         }
@@ -32,6 +33,7 @@ class Oc2079LiveBlogActivity : AppCompatActivity() {
         mPagerAdapter = LiveBlogPagerAdapter(this)
 
         mBinding.viewPager.adapter = mPagerAdapter
+        mBinding.viewPager.isUserInputEnabled = false
 
         TabLayoutMediator(mBinding.tabLayout, mBinding.viewPager) { tab, position ->
             tab.text = mPagerAdapter.getPageTitle(position)

@@ -149,6 +149,9 @@ dependencies {
     // Algolia
     implementation 'com.algolia:instantsearch-android:2.6.0'
 
+    // LiveBlog
+    implementation 'com.24liveblog:liveblog:1.1.0'
+
 }
 
 protobuf {
