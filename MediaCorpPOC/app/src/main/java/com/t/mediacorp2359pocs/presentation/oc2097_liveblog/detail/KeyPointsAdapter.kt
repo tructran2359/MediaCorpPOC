@@ -19,7 +19,10 @@ class KeyPointsAdapter : ListAdapter<KeyPoint, KeyPointVH>(KeyPointDiffUtils()) 
 
     override fun onBindViewHolder(holder: KeyPointVH, position: Int) {
         getItem(position)?.let {
-            holder.bind(it, position == 0)
+            holder.bind(
+                keyPoint = it,
+                isFirstItem = position == 0
+            )
         }
     }
 }
