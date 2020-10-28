@@ -6,4 +6,7 @@
 
     <color name="card_background">@android:color/white</color>
     <color name="highlight">#5500FF00</color>
+
+    <color name="deep_red">#b50000</color>
+    <color name="black">#000000</color>
 </resources>

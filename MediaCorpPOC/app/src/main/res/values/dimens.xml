@@ -5,6 +5,7 @@
 
     <dimen name="space_x1">4dp</dimen>
     <dimen name="space_x2">8dp</dimen>
+    <dimen name="space_x3">12dp</dimen>
 
     <dimen name="space_normal">16dp</dimen>
     <dimen name="space_medium">24dp</dimen>

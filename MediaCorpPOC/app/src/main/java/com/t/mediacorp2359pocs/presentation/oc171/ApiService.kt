@@ -6,11 +6,13 @@ import com.t.mediacorp2359pocs.model.json.JsonResponse
 import com.t.mediacorp2359pocs.model.json.LargeJsonResponse
 import com.t.mediacorp2359pocs.model.oc379.request.WidgetRequest
 import com.t.mediacorp2359pocs.model.oc379.response.WidgetsResponse
+import com.t.mediacorp2359pocs.presentation.oc2097_liveblog.detail.LiveBlogEventDetailResponse
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 import retrofit2.http.Url
 
@@ -48,4 +50,7 @@ interface ApiService {
     fun trackWidgetClicked(
         @Url url: String
     ) : Call<ResponseBody>
+
+    @GET
+    suspend fun getLiveBlogEventDetails(@Url url: String): LiveBlogEventDetailResponse
 }

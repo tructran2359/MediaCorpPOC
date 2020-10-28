@@ -3,6 +3,7 @@ package com.t.mediacorp2359pocs.presentation.oc2097_liveblog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.t.mediacorp2359pocs.presentation.oc2097_liveblog.detail.LiveBlogDetailFragment
 
 class LiveBlogPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
 
