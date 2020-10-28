@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.t.mediacorp2359pocs.presentation.oc2097_liveblog.detail.LiveBlogDetailFragment
+import com.t.mediacorp2359pocs.presentation.oc2097_liveblog.keypoints.LiveBlogKeyPointsFragment
 
 class LiveBlogPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
 

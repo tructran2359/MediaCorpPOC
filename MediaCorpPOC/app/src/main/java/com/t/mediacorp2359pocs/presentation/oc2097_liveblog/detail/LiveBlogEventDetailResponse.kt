@@ -9,6 +9,8 @@ data class LiveBlogEventDetailResponse(
         val event: Event = Event()
     ) {
         data class Event(
+            val title: String = "",
+            val cover: String = "",
             @SerializedName("keypoints")
             val keyPoints: List<KeyPoint> = emptyList()
         ) {
