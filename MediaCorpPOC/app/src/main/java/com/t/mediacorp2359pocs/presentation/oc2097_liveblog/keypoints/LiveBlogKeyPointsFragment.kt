@@ -23,7 +23,7 @@ class LiveBlogKeyPointsFragment : Fragment() {
     }
 
     private val mViewModel: LiveBlogEventPreviewViewModel by viewModels()
-    private val mAdapter = KeyPointsAdapter()
+    private val mAdapter = KeyPointsAdapter(maxCount = 2)
     private var mBinding: FragmentLiveBlogKeyPointsBinding? = null
 
     override fun onCreateView(

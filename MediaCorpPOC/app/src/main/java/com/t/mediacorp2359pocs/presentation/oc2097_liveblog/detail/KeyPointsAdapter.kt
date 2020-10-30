@@ -9,8 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.t.mediacorp2359pocs.databinding.ItemKeyPointBinding
 import com.t.mediacorp2359pocs.presentation.oc2097_liveblog.detail.LiveBlogEventDetailResponse.Data.Event.KeyPoint
 import com.t.mediacorp2359pocs.utils.toKeyPointTimeFormat
+import kotlin.math.min
 
-class KeyPointsAdapter : ListAdapter<KeyPoint, KeyPointVH>(KeyPointDiffUtils()) {
+class KeyPointsAdapter(private val maxCount: Int = UNLIMITED) : ListAdapter<KeyPoint, KeyPointVH>(KeyPointDiffUtils()) {
+    
+    companion object {
+        const val UNLIMITED = -1
+    }
+
+    override fun getItemCount(): Int {
+        return if (maxCount == UNLIMITED) {
+            super.getItemCount()
+        } else {
+            min(super.getItemCount(), maxCount)
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KeyPointVH {
         val binding = ItemKeyPointBinding.inflate(LayoutInflater.from(parent.context), parent, false)
