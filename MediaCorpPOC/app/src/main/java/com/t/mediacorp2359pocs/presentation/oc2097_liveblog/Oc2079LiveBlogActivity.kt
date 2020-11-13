@@ -10,7 +10,12 @@ import com.t.mediacorp2359pocs.databinding.ActivityOc2097LiveblogBinding
 class Oc2079LiveBlogActivity : AppCompatActivity() {
 
     companion object {
-        const val EVENT_ID = "2636807179789895648"
+//        const val EVENT_ID = "2636807179789895648"
+        /**
+         * Change according to this comment:
+         * https://mediacorp.atlassian.net/browse/OC-2097?focusedCommentId=166456
+         */
+        const val EVENT_ID = "2646498779702104530"
         fun getLaunchIntent(context: Context): Intent {
             return Intent(context, Oc2079LiveBlogActivity::class.java)
         }
